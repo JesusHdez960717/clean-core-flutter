@@ -5,50 +5,50 @@ import '../repo/CRUDRespository.dart';
 
 import '../PropertyChangeConstrains.dart';
 
-abstract class DefaultCRUDUseCase<T extends BasicDomainObject>
-    extends CRUDUseCase<T> {
-  CRUDRespository<T> repo;
+abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
+    extends CRUDUseCase<Domain> {
+  CRUDRespository<Domain> repo;
 
   DefaultCRUDUseCase({required this.repo});
 
   @override
-  T create(T newObject) {
+  Domain create(Domain newObject) {
     print("${PropertyChangeConstrains.BEFORE_CREATE}  => $newObject");
-    repo.create(newObject);
+    newObject = repo.create(newObject);
     print("${PropertyChangeConstrains.AFTER_CREATE}  => $newObject");
     return newObject;
   }
 
   @override
-  List<T> findAll() {
+  Domain edit(Domain objectToEdit) {
+    print("${PropertyChangeConstrains.BEFORE_EDIT}  => $objectToEdit");
+    Domain domain = repo.edit(objectToEdit);
+    print("${PropertyChangeConstrains.AFTER_EDIT}  => $objectToEdit");
+    return domain;
+  }
+
+  @override
+  List<Domain> findAll() {
     print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => EmptyList{}");
-    List<T> list = repo.findAll();
+    List<Domain> list = repo.findAll();
     print("${PropertyChangeConstrains.AFTER_FIND_ALL}  => $list");
     return list;
   }
 
   @override
-  T findBy(Object keyId) {
+  Domain findBy(int keyId) {
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
-    T object = repo.findBy(keyId);
+    Domain object = repo.findBy(keyId);
     print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
     return object;
   }
 
   @override
-  T destroy(T objectToDestroy) {
+  Domain destroy(Domain objectToDestroy) {
     print("${PropertyChangeConstrains.BEFORE_DESTROY}  => $objectToDestroy");
     repo.destroy(objectToDestroy);
     print("${PropertyChangeConstrains.AFTER_DESTROY}  => $objectToDestroy");
     return objectToDestroy;
-  }
-
-  @override
-  T edit(T objectToEdit) {
-    print("${PropertyChangeConstrains.BEFORE_EDIT}  => $objectToEdit");
-    T domain = repo.update(objectToEdit);
-    print("${PropertyChangeConstrains.AFTER_EDIT}  => $objectToEdit");
-    return domain;
   }
 
   @override

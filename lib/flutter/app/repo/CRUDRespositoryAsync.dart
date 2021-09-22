@@ -2,17 +2,17 @@ import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
 
 import 'AbstractRespository.dart';
 
-abstract class CRUDRespositoryAsync<T extends BasicDomainObject>
+abstract class CRUDRespositoryAsync<Domain extends BasicDomainObject>
     extends AbstractRespository {
-  Future<T> create(T newObject);
+  Future<Domain> create(Domain newObject);
 
-  Future<T> update(T objectToEdit);
+  Future<Domain> edit(Domain objectToEdit);
 
-  Future<T> destroy(T objectToDestroy);
+  Future<Domain> destroy(Domain objectToDestroy);
 
-  Future<T> findBy(Object keyId);
+  Future<Domain> findBy(int keyId);
 
-  Future<List<T>> findAll();
+  Future<List<Domain>> findAll();
 
   Future<int> count() {
     return findAll().then((value) => value.length);

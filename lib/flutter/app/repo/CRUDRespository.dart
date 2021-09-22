@@ -2,17 +2,17 @@ import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
 
 import 'AbstractRespository.dart';
 
-abstract class CRUDRespository<T extends BasicDomainObject>
+abstract class CRUDRespository<Domain extends BasicDomainObject>
     extends AbstractRespository {
-  T create(T newObject);
+  Domain create(Domain newObject);
 
-  T update(T objectToEdit);
+  Domain edit(Domain objectToEdit);
 
-  T destroy(T objectToDestroy);
+  Domain destroy(Domain objectToDestroy);
 
-  T findBy(Object keyId);
+  Domain findBy(int keyId);
 
-  List<T> findAll();
+  List<Domain> findAll();
 
   int count() {
     return findAll().length;

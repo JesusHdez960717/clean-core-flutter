@@ -2,17 +2,17 @@ import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
 
 import 'AbstractUseCase.dart';
 
-abstract class CRUDUseCaseAsync<T extends BasicDomainObject>
+abstract class CRUDUseCaseAsync<Domain extends BasicDomainObject>
     implements AbstractUseCase {
-  Future<T> create(T newObject);
+  Future<Domain> create(Domain newObject);
 
-  Future<T> edit(T objectToEdit);
+  Future<Domain> edit(Domain objectToEdit);
 
-  Future<T> destroy(T objectToDestroy);
+  Future<Domain> destroy(Domain objectToDestroy);
 
-  Future<T> findBy(int keyId);
+  Future<Domain> findBy(int keyId);
 
-  Future<List<T>> findAll();
+  Future<List<Domain>> findAll();
 
   Future<int> count() async {
     return findAll().then((value) => value.length);
