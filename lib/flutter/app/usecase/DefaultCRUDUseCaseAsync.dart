@@ -1,58 +1,57 @@
+import 'package:clean_core/flutter/app/repo/CleanCoreRepoExporter.dart';
 import 'package:clean_core/flutter/app/usecase/CleanCoreUseCaseExporter.dart';
 import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
 
-import '../repo/CRUDRespository.dart';
-
 import '../PropertyChangeConstrains.dart';
 
-abstract class DefaultCRUDUseCase<T extends BasicDomainObject>
-    extends CRUDUseCase<T> {
-  CRUDRespository<T> repo;
+abstract class DefaultCRUDUseCaseAsync<T extends BasicDomainObject>
+    extends CRUDUseCaseAsync<T> {
+  CRUDRespositoryAsync<T> repo;
 
-  DefaultCRUDUseCase({required this.repo});
+  DefaultCRUDUseCaseAsync({required this.repo});
 
   @override
-  T create(T newObject) {
+  Future<T> create(T newObject) async {
     print("${PropertyChangeConstrains.BEFORE_CREATE}  => $newObject");
-    repo.create(newObject);
+    newObject = await repo.create(newObject);
     print("${PropertyChangeConstrains.AFTER_CREATE}  => $newObject");
     return newObject;
   }
 
   @override
-  List<T> findAll() {
+  Future<List<T>> findAll() async {
     print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => EmptyList{}");
-    List<T> list = repo.findAll();
+    List<T> list = await repo.findAll();
     print("${PropertyChangeConstrains.AFTER_FIND_ALL}  => $list");
     return list;
   }
 
   @override
-  T findBy(Object keyId) {
+  Future<T> findBy(Object keyId) async {
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
-    T object = repo.findBy(keyId);
+    T object = await repo.findBy(keyId);
     print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
     return object;
   }
 
   @override
-  T destroy(T objectToDestroy) {
+  Future<T> destroy(T objectToDestroy) async {
     print("${PropertyChangeConstrains.BEFORE_DESTROY}  => $objectToDestroy");
-    repo.destroy(objectToDestroy);
+    objectToDestroy = await repo.destroy(objectToDestroy);
     print("${PropertyChangeConstrains.AFTER_DESTROY}  => $objectToDestroy");
     return objectToDestroy;
   }
 
   @override
-  T edit(T objectToEdit) {
+  Future<T> edit(T objectToEdit) async {
     print("${PropertyChangeConstrains.BEFORE_EDIT}  => $objectToEdit");
-    T domain = repo.update(objectToEdit);
+    T domain = await repo.update(objectToEdit);
     print("${PropertyChangeConstrains.AFTER_EDIT}  => $objectToEdit");
     return domain;
   }
 
   @override
-  int count() {
+  Future<int> count() {
     return repo.count();
   }
 }

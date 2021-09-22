@@ -1,1 +1,1 @@
-class AbstractUseCase{}
+abstract class AbstractUseCase{}

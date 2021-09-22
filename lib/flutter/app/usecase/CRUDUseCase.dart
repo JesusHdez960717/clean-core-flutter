@@ -1,15 +1,16 @@
+import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
+
 import 'AbstractUseCase.dart';
 
-abstract class CRUDUseCase<T> implements AbstractUseCase {
+abstract class CRUDUseCase<T extends BasicDomainObject>
+    implements AbstractUseCase {
   T create(T newObject);
 
   T edit(T objectToEdit);
 
   T destroy(T objectToDestroy);
 
-  T destroyById(Object keyId);
-
-  T findBy(Object keyId);
+  T findBy(int keyId);
 
   List<T> findAll();
 
