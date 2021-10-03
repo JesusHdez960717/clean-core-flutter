@@ -7,9 +7,20 @@ import 'AbstractRepository.dart';
 ///
 /// See [AbstractRepository] for general info.
 ///
-/// Example at [DefaultCRUDRepo]
+/// EXAMPLE:
+/// This is the definition of Parent CRUDRepository, it need to be
+/// implemented after, implementation example at [DefaultCRUDRepo].
+///
+/// See [BasicDomainObject] for ParentDomain's example code.
+///
+/// ```dart
+///   abstract class ParentRepo extends CRUDRepository<ParentDomain> {
+///     //define in here the methods of this repo, implemented it [DefaultCRUDRepo]
+///     void doStuff();
+///   }
+/// ```
 abstract class CRUDRepository<Domain extends BasicDomainObject>
-    extends AbstractRepository {//todo: example
+    extends AbstractRepository {
   ///Create the domain.
   Domain create(Domain newObject);
 

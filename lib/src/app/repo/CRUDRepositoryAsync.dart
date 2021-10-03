@@ -9,7 +9,8 @@ import 'AbstractRepository.dart';
 ///
 /// Example at [DefaultCRUDRepoAsync]
 abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
-    extends AbstractRepository {//todo: example
+    extends AbstractRepository {
+  //todo: example of definition
   ///Create the domain.
   Future<Domain> create(Domain newObject);
 
