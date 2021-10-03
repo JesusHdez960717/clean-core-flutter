@@ -1,10 +1,14 @@
 import 'package:clean_core/clean_core.dart';
 
 import '../PropertyChangeConstrains.dart';
-import 'CRUDRepositoryInternal.dart';
+import 'internal_repo/CRUDRepositoryInternal.dart';
 
+///Default implementation of CRUDRepository of type Domain extends
+///[BasicDomainObject] & Entity extends [BasicEntityObject<Domain>]
+///It's basically a delegate to the internal repo.
 abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity extends BasicEntityObject<Domain>> extends CRUDRepository<Domain> {
+  ///internal repo, the one who really do the operations.
   CRUDRepositoryInternal<Entity> internalRepo;
 
   GeneralConverter<Domain, Entity> converter;
