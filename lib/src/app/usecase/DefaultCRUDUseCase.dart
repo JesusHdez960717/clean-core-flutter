@@ -1,5 +1,4 @@
-import 'package:clean_core/flutter/app/usecase/CleanCoreUseCaseExporter.dart';
-import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
+import 'package:clean_core/clean_core.dart';
 
 import '../repo/CRUDRespository.dart';
 

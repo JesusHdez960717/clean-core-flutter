@@ -1,4 +1,4 @@
-import 'package:clean_core/flutter/app/repo/entity/CleanCoreEntityExporter.dart';
+import 'package:clean_core/clean_core.dart';
 
 import 'AbstractRespository.dart';
 

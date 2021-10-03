@@ -1,5 +1,4 @@
-import 'package:clean_core/flutter/app/repo/entity/CleanCoreEntityExporter.dart';
-import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
+import 'package:clean_core/clean_core.dart';
 
 class DefaultGeneralConverter<Domain extends BasicDomainObject,
         Entity extends BasicEntityObject<Domain>>

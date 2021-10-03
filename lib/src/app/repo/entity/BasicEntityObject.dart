@@ -1,5 +1,4 @@
-import 'package:clean_core/flutter/app/repo/entity/converter/Converter.dart';
-import 'package:clean_core/flutter/domain/CleanCoreDomainExporter.dart';
+import 'package:clean_core/clean_core.dart';
 
 import 'EntityObject.dart';
 
