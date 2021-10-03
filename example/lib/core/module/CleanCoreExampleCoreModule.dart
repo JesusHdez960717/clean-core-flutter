@@ -3,17 +3,12 @@ import 'package:clean_core_example/clean_core_example.dart';
 class ObjectBoxCoreModule {
   static late final ParentUseCase PARENT_USECASE;
 
+  static bool init() {
+    //init repo
+    CleanCoreExampleRepoModule.init();
 
-  static Future<bool> init() async {
-    bool initialized = await ObjectBoxExampleRepoModule.init().then((value) {
-          PARENT_USECASE =
-              ParentUseCaseImpl(ObjectBoxExampleRepoModule.PARENT_REPO);
-        }) !=
-        null;
-    return initialized;
-  }
+    PARENT_USECASE = ParentUseCaseImpl(CleanCoreExampleRepoModule.PARENT_REPO);
 
-  static void dispose() {
-    ObjectBoxExampleRepoModule.dispose();
+    return true;
   }
 }
