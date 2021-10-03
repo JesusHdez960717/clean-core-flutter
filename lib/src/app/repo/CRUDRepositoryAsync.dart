@@ -1,9 +1,9 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractRespository.dart';
+import 'AbstractRepository.dart';
 
-abstract class CRUDRespositoryAsync<Domain extends BasicDomainObject>
-    extends AbstractRespository {
+abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
+    extends AbstractRepository {
   Future<Domain> create(Domain newObject);
 
   Future<Domain> edit(Domain objectToEdit);

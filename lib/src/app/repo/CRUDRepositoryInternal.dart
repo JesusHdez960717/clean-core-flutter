@@ -1,9 +1,9 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractRespository.dart';
+import 'AbstractRepository.dart';
 
-abstract class CRUDRespositoryInternal<Entity extends BasicEntityObject>
-    extends AbstractRespository {
+abstract class CRUDRepositoryInternal<Entity extends BasicEntityObject>
+    extends AbstractRepository {
   Entity create(Entity newObject);
 
   Entity edit(Entity objectToEdit);

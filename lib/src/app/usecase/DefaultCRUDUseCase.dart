@@ -1,12 +1,12 @@
 import 'package:clean_core/clean_core.dart';
 
-import '../repo/CRUDRespository.dart';
+import '../repo/CRUDRepository.dart';
 
 import '../PropertyChangeConstrains.dart';
 
 abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
     extends CRUDUseCase<Domain> {
-  CRUDRespository<Domain> repo;
+  CRUDRepository<Domain> repo;
 
   DefaultCRUDUseCase({required this.repo});
 

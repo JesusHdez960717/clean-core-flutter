@@ -4,7 +4,7 @@ import '../PropertyChangeConstrains.dart';
 
 abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
     extends CRUDUseCaseAsync<Domain> {
-  CRUDRespositoryAsync<Domain> repo;
+  CRUDRepositoryAsync<Domain> repo;
 
   DefaultCRUDUseCaseAsync({required this.repo});
 

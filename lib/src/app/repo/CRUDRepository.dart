@@ -1,9 +1,10 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractRespository.dart';
+import 'AbstractRepository.dart';
 
-abstract class CRUDRespository<Domain extends BasicDomainObject>
-    extends AbstractRespository {
+///Default CRUD repository.
+abstract class CRUDRepository<Domain extends BasicDomainObject>
+    extends AbstractRepository {
   Domain create(Domain newObject);
 
   Domain edit(Domain objectToEdit);

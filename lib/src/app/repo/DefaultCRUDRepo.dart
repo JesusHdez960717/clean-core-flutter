@@ -1,11 +1,11 @@
 import 'package:clean_core/clean_core.dart';
 
 import '../PropertyChangeConstrains.dart';
-import 'CRUDRespositoryInternal.dart';
+import 'CRUDRepositoryInternal.dart';
 
 abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject<Domain>> extends CRUDRespository<Domain> {
-  CRUDRespositoryInternal<Entity> internalRepo;
+    Entity extends BasicEntityObject<Domain>> extends CRUDRepository<Domain> {
+  CRUDRepositoryInternal<Entity> internalRepo;
 
   GeneralConverter<Domain, Entity> converter;
 
