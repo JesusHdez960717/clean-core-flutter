@@ -1,8 +1,10 @@
 library clean_core_usecase_exporter;
 
-//exporta los usecase
+//export the usecases
 export 'AbstractUseCase.dart';
 export 'CRUDUseCase.dart';
-export 'DefaultCRUDUseCase.dart';
 export 'CRUDUseCaseAsync.dart';
+export 'DefaultCRUDUseCase.dart';
+export 'DefaultCRUDUseCaseAsync.dart';
+export '../PropertyChangeConstrains.dart';
 

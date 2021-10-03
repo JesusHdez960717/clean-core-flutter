@@ -1,11 +1,27 @@
 import 'package:clean_core/clean_core.dart';
 
-import '../repo/CRUDRepository.dart';
-
-import '../PropertyChangeConstrains.dart';
-
-//todo: example
-//todo: doc
+///Default implementation of [CRUDUseCase] of type Domain extends
+///[BasicDomainObject]
+///It's basically a delegate to the repo.
+///
+/// EXAMPLE:
+/// This is the implementation of ParentUseCase.
+/// See [BasicDomainObject] for ParentDomain's example code.
+/// See [CRUDUseCase] for ParentUseCase's example code.
+/// ```dart
+///   class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain>
+///     implements ParentUseCase {
+///      late ParentRepo _repo;
+///
+///   ParentUseCaseImpl(ParentRepo repo)
+///       : _repo = repo,
+///         super(repo: repo);
+///
+///   void doStuffInUseCase(){
+///         print('Doing Stuff in the use case layer...');
+///   }
+/// }
+/// ```
 abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
     extends CRUDUseCase<Domain> {
   CRUDRepository<Domain> repo;

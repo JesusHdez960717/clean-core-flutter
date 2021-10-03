@@ -1,5 +1,4 @@
-import 'DomainObject.dart';
-import 'IntIdentifier.dart';
+import 'package:clean_core/clean_core.dart';
 
 ///Simplest of all entity's objects
 ///Entity that extends [DomainObject] with [IntIdentifier]

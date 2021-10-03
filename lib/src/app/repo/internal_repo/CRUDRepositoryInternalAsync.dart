@@ -5,7 +5,7 @@ import 'AbstractInternalRepo.dart';
 ///Default CRUD repository of type Entity extends [BasicEntityObject]
 ///for internal Async operations.
 ///Implemented by the framework, the external library of persistence.
-abstract class CRUDRepositoryInternal<Entity extends BasicEntityObject>
+abstract class CRUDRepositoryInternalAsync<Entity extends BasicEntityObject>
     extends AbstractInternalRepo {//todo: example
   ///Create the domain.
   Future<Entity> create(Entity newObject);

@@ -2,6 +2,8 @@ import 'package:clean_core/clean_core.dart';
 
 ///General converter entity <==> domain, it generalize and extract the
 ///conversion entity => domain & domain => entity in a single isolated class
+///
+/// See [DefaultGeneralConverter] for simple implementation example
 abstract class GeneralConverter<Domain extends BasicDomainObject,
     Entity extends BasicEntityObject<Domain>> {
   ///Convert entity into domain.

@@ -1,8 +1,5 @@
 import 'package:clean_core/clean_core.dart';
 
-import '../PropertyChangeConstrains.dart';
-import 'internal_repo/CRUDRepositoryInternal.dart';
-
 ///Default implementation of [CRUDRepository] of type Domain extends
 ///[BasicDomainObject] & Entity extends [BasicEntityObject]<Domain>
 ///It's basically a delegate to the internal repo.
@@ -16,7 +13,9 @@ import 'internal_repo/CRUDRepositoryInternal.dart';
 ///   class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
 ///       implements ParentRepo {
 ///       @override
-///       void doStuff(){print('Doing Stuff...');}
+///       void doStuffInRepo(){
+///         print('Doing Stuff in the repository layer...');
+///       }
 ///   }
 /// ```
 abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,

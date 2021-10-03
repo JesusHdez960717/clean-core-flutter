@@ -1,7 +1,5 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractUseCase.dart';
-
 ///[AbstractUseCase] of CRUD Async operations, of type Domain extends [BasicDomainObject].
 ///Generally not implemented, instead extends the use case from [DefaultCRUDUseCase].
 ///
@@ -10,6 +8,7 @@ import 'AbstractUseCase.dart';
 /// Example at [DefaultCRUDUseCaseAsync]
 abstract class CRUDUseCaseAsync<Domain extends BasicDomainObject>
     implements AbstractUseCase {
+  //todo: example of definition
   ///Create the domain.
   Future<Domain> create(Domain newObject);
 

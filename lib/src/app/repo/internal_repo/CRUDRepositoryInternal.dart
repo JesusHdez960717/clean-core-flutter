@@ -1,7 +1,5 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractInternalRepo.dart';
-
 ///Default CRUD repository of type Entity extends [BasicEntityObject]
 ///for internal operations.
 ///Implemented by the framework, the external library of persistence.

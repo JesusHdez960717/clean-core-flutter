@@ -1,7 +1,5 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'EntityObject.dart';
-
 ///Simplest of all entity's objects
 ///Entity that extends [EntityObject] with [IntIdentifier] and [Converter]<Domain>
 ///

@@ -1,7 +1,5 @@
 import 'package:clean_core/clean_core.dart';
 
-import 'AbstractRepository.dart';
-
 ///[AbstractRepository] of CRUD Async operations, of type Domain extends [BasicDomainObject].
 ///Generally not implemented, instead extends the repo from [DefaultCRUDRepoAsync].
 ///

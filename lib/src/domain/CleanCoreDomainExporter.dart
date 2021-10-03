@@ -1,6 +1,6 @@
 library clean_core_domain_exporter;
 
-//exporta los domain
+//export the domains
 export 'DomainObject.dart';
 export 'BasicDomainObject.dart';
 
