@@ -29,4 +29,14 @@ import 'package:clean_core/clean_core.dart';
 ///   }
 /// ```
 abstract class BasicEntityObject<Domain extends BasicDomainObject>
-    extends EntityObject with IntIdentifier, Converter<Domain> {}
+    extends EntityObject
+    with
+        IntIdentifier,
+        Converter<Domain>,
+        Comparable<BasicEntityObject<Domain>> {
+  ///By default compare the two entities by it's id
+  @override
+  int compareTo(BasicEntityObject other) {
+    return this.id.compareTo(other.id);
+  }
+}
