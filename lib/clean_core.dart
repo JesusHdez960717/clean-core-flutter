@@ -3,7 +3,7 @@ library clean_core;
 export 'src/app/repo/entity/CleanCoreEntityExporter.dart';
 export 'src/app/repo/CleanCoreRepoExporter.dart';
 export 'src/app/usecase/CleanCoreUseCaseExporter.dart';
-export 'src/domain/CleanCoreDomainExporter.dart';
+export 'src/app/domain/CleanCoreDomainExporter.dart';
 
 import 'dart:async';
 
