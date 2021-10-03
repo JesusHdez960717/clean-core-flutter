@@ -2,6 +2,8 @@ import 'package:clean_core/clean_core.dart';
 
 import '../PropertyChangeConstrains.dart';
 
+//todo: example
+//todo: doc
 abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
     extends CRUDUseCaseAsync<Domain> {
   CRUDRepositoryAsync<Domain> repo;

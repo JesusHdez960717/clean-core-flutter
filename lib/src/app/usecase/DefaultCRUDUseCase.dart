@@ -4,6 +4,8 @@ import '../repo/CRUDRepository.dart';
 
 import '../PropertyChangeConstrains.dart';
 
+//todo: example
+//todo: doc
 abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
     extends CRUDUseCase<Domain> {
   CRUDRepository<Domain> repo;

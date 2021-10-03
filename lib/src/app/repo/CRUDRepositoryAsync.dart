@@ -2,13 +2,14 @@ import 'package:clean_core/clean_core.dart';
 
 import 'AbstractRepository.dart';
 
-///AbstractRepository of CRUD operations, of type Domain extends
-///[BasicDomainObject] for Async operations.
+///[AbstractRepository] of CRUD Async operations, of type Domain extends [BasicDomainObject].
 ///Generally not implemented, instead extends the repo from [DefaultCRUDRepoAsync].
 ///
 /// See [AbstractRepository] for general info.
+///
+/// Example at [DefaultCRUDRepoAsync]
 abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
-    extends AbstractRepository {
+    extends AbstractRepository {//todo: example
   ///Create the domain.
   Future<Domain> create(Domain newObject);
 
@@ -26,7 +27,7 @@ abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
 
   ///Count the amount of domains.
   ///By default calling the length of findAll().
-  Future<int> count() {
+  Future<int> count() async {
     return findAll().then((value) => value.length);
   }
 }

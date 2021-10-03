@@ -24,7 +24,7 @@ abstract class CRUDRepositoryInternal<Entity extends BasicEntityObject>
 
   ///Count the amount of domains.
   ///By default calling the length of findAll().
-  Future<int> count() {
+  Future<int> count() async {
     return findAll().then((value) => value.length);
   }
 }

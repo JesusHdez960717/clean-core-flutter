@@ -2,12 +2,14 @@ import 'package:clean_core/clean_core.dart';
 
 import 'AbstractRepository.dart';
 
-///AbstractRepository of CRUD operations, of type Domain extends [BasicDomainObject].
-///Generally not implemented, instead extends the repo from [DefaultCRUDRepo].
+///[AbstractRepository] of CRUD operations, of type Domain extends [BasicDomainObject].
+///Generally not implemented, instead extends the use case from [DefaultCRUDRepo].
 ///
 /// See [AbstractRepository] for general info.
+///
+/// Example at [DefaultCRUDRepo]
 abstract class CRUDRepository<Domain extends BasicDomainObject>
-    extends AbstractRepository {
+    extends AbstractRepository {//todo: example
   ///Create the domain.
   Domain create(Domain newObject);
 

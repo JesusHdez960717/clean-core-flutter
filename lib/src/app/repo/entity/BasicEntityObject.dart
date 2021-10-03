@@ -2,11 +2,11 @@ import 'package:clean_core/clean_core.dart';
 
 import 'EntityObject.dart';
 
-///Simplest of all possible entity object's
+///Simplest of all entity's objects
 ///Entity that extends [EntityObject] with [IntIdentifier] and [Converter]<Domain>
 ///
 /// EXAMPLE:
-/// See [BasicDomainObject] for ParentDomain's example code
+/// See [BasicDomainObject] for ParentDomain's example code.
 /// ```dart
 ///   class ParentEntity extends BasicEntityObject<ParentDomain> {
 ///       static final ParentConverter CONVERTER = ParentConverter();
