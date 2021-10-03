@@ -1,6 +1,26 @@
 import 'package:clean_core/clean_core.dart';
 
 ///Default implementation of [GeneralConverter]
+///
+/// EXAMPLE:
+/// See [BasicEntityObject] for ParentEntity's example code
+/// See [BasicDomainObject] for ParentDomain's example code
+///
+/// ```dart
+/// class ParentConverter
+///     extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
+///   @override
+///   ParentDomain toDomain(ParentEntity entity) {
+///     return entity.toDomain();
+///   }
+///
+///   @override
+///   ParentEntity toEntity(ParentDomain domain) {
+///     return ParentEntity.fromDomain(domain);
+///   }
+/// }
+/// ```
+///
 class DefaultGeneralConverter<Domain extends BasicDomainObject,
         Entity extends BasicEntityObject<Domain>>
     extends GeneralConverter<Domain, Entity> {
