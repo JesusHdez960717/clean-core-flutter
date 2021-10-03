@@ -4,6 +4,7 @@ export 'src/app/repo/entity/CleanCoreEntityExporter.dart';
 export 'src/app/repo/CleanCoreRepoExporter.dart';
 export 'src/app/usecase/CleanCoreUseCaseExporter.dart';
 export 'src/app/domain/CleanCoreDomainExporter.dart';
+export 'src/utils/repo_impl/InMemoryInternalCRUDRepo.dart';
 
 import 'dart:async';
 

@@ -5,12 +5,10 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
     implements ParentRepo {
   late ParentRepoInternal _internal;
 
-
-  ParentRepoImpl(Store store)
+  ParentRepoImpl()
       : super(
-            internalRepo: ParentRepoInternal(store),
+            internalRepo: ParentRepoInternalImpl(),
             converter: ParentEntity.CONVERTER) {
     _internal = internalRepo as ParentRepoInternal;
   }
-
 }

@@ -1,4 +1,5 @@
+import 'package:clean_core/clean_core.dart';
 import 'package:clean_core_example/clean_core_example.dart';
 
-class ParentRepoInternal
-    extends ObjectBoxCRUDRespositoryInternal<ParentEntity> {}
+abstract class ParentRepoInternal extends CRUDRepositoryInternal<ParentEntity> {
+}

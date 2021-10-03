@@ -6,3 +6,4 @@ export 'core/repo_def/CleanCoreExampleRepoDefExporter.dart';
 export 'repo/entities/Entities.dart';
 export 'repo/repo_impl/RepoImplExporter.dart';
 export 'repo/repo_internal/CleanCoreExampleRepoInternalExporter.dart';
+export 'repo/repo_internal_impl/CleanCoreExampleRepoInternalImplExporter.dart';
