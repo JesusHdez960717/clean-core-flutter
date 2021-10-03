@@ -8,3 +8,12 @@
 
 build/
 
+example/.DS_Store
+example/.dart_tool/
+example/.idea/
+example/.vscode/
+
+example/.packages
+example/.pub/
+
+example/build/
