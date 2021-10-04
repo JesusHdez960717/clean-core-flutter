@@ -27,7 +27,7 @@ class InMemoryInternalCRUDRepo<Entity extends BasicEntityObject>
     if (objectToEdit.id == 0) {
       throw new Exception("Can't edit en entity with id == 0");
     }
-    _list.remove(objectToEdit);
+    destroy(objectToEdit);
     _list.add(objectToEdit);
 
     ///fire property change listener AFTER_EDIT
@@ -54,7 +54,10 @@ class InMemoryInternalCRUDRepo<Entity extends BasicEntityObject>
     ///fire property change listener BEFORE_FIND_BY
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
 
-    Entity object = _list.lookup(keyId) as Entity;
+    List<Entity> l = _list.toList();
+    l.removeWhere((element) => element.id != keyId);
+
+    Entity object = l[0];
 
     ///fire property change listener AFTER_FIND_BY
     print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
@@ -67,7 +70,7 @@ class InMemoryInternalCRUDRepo<Entity extends BasicEntityObject>
     ///fire property change listener BEFORE_DESTROY
     print("${PropertyChangeConstrains.BEFORE_DESTROY}  => $objectToDestroy");
 
-    _list.remove(objectToDestroy);
+    _list.removeWhere((item) => item.id == objectToDestroy.id);
 
     ///fire property change listener AFTER_DESTROY
     print("${PropertyChangeConstrains.AFTER_DESTROY}  => $objectToDestroy");
