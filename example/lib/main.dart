@@ -1,58 +1,206 @@
+import 'dart:math';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:clean_core_example/clean_core_example.dart';
 
-import 'package:flutter/services.dart';
-import 'package:clean_core/clean_core.dart';
+void main() => runApp(MyApp()); //flutter run -t lib/main.dart
 
-void main() {
-  runApp(MyApp());
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'Clean Core Example',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: MyHomePage(title: 'Clean Core Example'),
+      );
 }
 
-class MyApp extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+class _MyHomePageState extends State<MyHomePage> {
+  final faker = Faker();
 
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await CleanCore.platformVersion ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
+  void _addParent() {
+    CleanCoreExampleCoreModule.PARENT_USECASE.create(ParentDomain(
+        name: faker.person.name(),
+        bornDay: faker.date.dateTime(minYear: 1980, maxYear: 2000)));
     setState(() {
-      _platformVersion = platformVersion;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("created"),
+          backgroundColor: Colors.green,
+        ),
+      );
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
+  void _editParent(ParentDomain parent) {
+    parent.name = faker.person.name();
+
+    CleanCoreExampleCoreModule.PARENT_USECASE.edit(parent);
+    setState(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("edited"),
+          duration: Duration(milliseconds: 1500),
+          backgroundColor: Colors.blue,
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+      );
+    });
+  }
+
+  void _destroyParent(ParentDomain parent) {
+    ParentDomain dest =
+        CleanCoreExampleCoreModule.PARENT_USECASE.destroy(parent);
+    setState(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              "deleted $dest, length: ${CleanCoreExampleCoreModule.PARENT_USECASE.count()}"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    });
+  }
+
+  void _findParent() {
+    List<ParentDomain> all =
+        CleanCoreExampleCoreModule.PARENT_USECASE.findAll();
+    ParentDomain randomParent = all[Random().nextInt(all.length)];
+
+    ParentDomain selectedParent =
+        CleanCoreExampleCoreModule.PARENT_USECASE.findBy(randomParent.id);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("findBy $selectedParent"),
+        duration: Duration(milliseconds: 1500),
+        backgroundColor: Colors.purple,
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    CleanCoreExampleCoreModule.init();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          actions: [
+            IconButton(
+              key: Key('find'),
+              tooltip: "Find By random id",
+              onPressed: _findParent,
+              icon: Icon(Icons.find_in_page_outlined),
+            ),
+            IconButton(
+              key: Key('action use case'),
+              tooltip: "Call method in the use case",
+              onPressed: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                        .doStuffInUseCase()),
+                    duration: Duration(milliseconds: 1500),
+                    backgroundColor: Colors.pink,
+                  ),
+                )
+              },
+              icon: Icon(Icons.person),
+            ),
+            IconButton(
+              key: Key('action use case down'),
+              tooltip: "Call method in repo, delegated by the use case",
+              onPressed: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                        .doStuffDeeper()),
+                    duration: Duration(milliseconds: 1500),
+                    backgroundColor: Colors.yellow,
+                  ),
+                )
+              },
+              icon: Icon(Icons.watch),
+            )
+          ],
+        ),
+        body: generateList(
+          CleanCoreExampleCoreModule.PARENT_USECASE.findAll(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          key: Key('submit'),
+          onPressed: _addParent,
+          child: Icon(Icons.add),
+        ),
+      );
+
+  Widget generateList(List<ParentDomain> list) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          columns: [
+            DataColumn(
+              label: Text('id'),
+            ),
+            DataColumn(
+              label: Text('name'),
+            ),
+            DataColumn(
+              label: Text('date'),
+            ),
+            DataColumn(
+              label: Text('action'),
+            ),
+          ],
+          rows: list
+              .map(
+                (item) => DataRow(
+                  cells: [
+                    DataCell(
+                      Text(item.id.toString()),
+                    ),
+                    DataCell(
+                      Text(item.name),
+                    ),
+                    DataCell(
+                      Text(item.bornDayFormat),
+                    ),
+                    DataCell(
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              _editParent(item);
+                            },
+                            icon: Icon(Icons.edit),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              _destroyParent(item);
+                            },
+                            icon: Icon(Icons.delete_forever),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+              .toList(),
         ),
       ),
     );

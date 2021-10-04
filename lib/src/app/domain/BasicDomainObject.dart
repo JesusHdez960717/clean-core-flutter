@@ -20,4 +20,11 @@ import 'package:clean_core/clean_core.dart';
 ///     }
 ///   }
 ///
-abstract class BasicDomainObject extends DomainObject with IntIdentifier {}
+abstract class BasicDomainObject extends DomainObject
+    with IntIdentifier, Comparable<BasicDomainObject> {
+  ///By default compare the two domain by it's id
+  @override
+  int compareTo(BasicDomainObject other) {
+    return this.id.compareTo(other.id);
+  }
+}
