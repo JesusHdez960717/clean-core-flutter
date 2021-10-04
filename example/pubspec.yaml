@@ -1,0 +1,26 @@
+name: clean_core_example
+description: Demonstrates how to use the clean_core plugin.
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
+  faker: ^2.0.0
+
+  clean_core:
+    path: ../
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true

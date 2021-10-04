@@ -1,0 +1,30 @@
+name: clean_core
+description: Standard for implementing clean's architecture
+version: 1.0.0.SNAPSHOT.20211003
+homepage: https://github.com/JesusHdezWaterloo/clean-core-flutter.git
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+  flutter: ">=1.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.root101.clean.core.flutter.clean_core
+        pluginClass: CleanCorePlugin
+      ios:
+        pluginClass: CleanCorePlugin
+      web:
+        pluginClass: CleanCoreWeb
+        fileName: clean_core_web.dart
