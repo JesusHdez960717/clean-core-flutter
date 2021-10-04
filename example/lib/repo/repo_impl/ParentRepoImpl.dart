@@ -11,4 +11,9 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
             converter: ParentEntity.CONVERTER) {
     _internal = internalRepo as ParentRepoInternal;
   }
+
+  @override
+  String doStuffDeeper() {
+    return "Doing Stuff Super deep, can go deeper";
+  }
 }

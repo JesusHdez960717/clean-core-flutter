@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:clean_core_example/clean_core_example.dart';
@@ -23,17 +25,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _noteInputController = TextEditingController();
-
   final faker = Faker();
 
-  void _addPerson(String text) {
-    if (text.isEmpty) return;
+  void _addParent() {
     CleanCoreExampleCoreModule.PARENT_USECASE.create(ParentDomain(
-        name: text,
+        name: faker.person.name(),
         bornDay: faker.date.dateTime(minYear: 1980, maxYear: 2000)));
-    _noteInputController.text = '';
-    setState(() {});
+    setState(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("created"),
+          backgroundColor: Colors.green,
+        ),
+      );
+    });
+  }
+
+  void _editParent(ParentDomain parent) {
+    parent.name = faker.person.name();
+
+    CleanCoreExampleCoreModule.PARENT_USECASE.edit(parent);
+    setState(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("edited"),
+          duration: Duration(milliseconds: 1500),
+          backgroundColor: Colors.blue,
+        ),
+      );
+    });
+  }
+
+  void _destroyParent(ParentDomain parent) {
+    ParentDomain dest =
+        CleanCoreExampleCoreModule.PARENT_USECASE.destroy(parent);
+    setState(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              "deleted $dest, length: ${CleanCoreExampleCoreModule.PARENT_USECASE.count()}"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    });
+  }
+
+  void _findParent() {
+    List<ParentDomain> all =
+        CleanCoreExampleCoreModule.PARENT_USECASE.findAll();
+    ParentDomain randomParent = all[Random().nextInt(all.length)];
+
+    ParentDomain selectedParent =
+        CleanCoreExampleCoreModule.PARENT_USECASE.findBy(randomParent.id);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("findBy $selectedParent"),
+        duration: Duration(milliseconds: 1500),
+        backgroundColor: Colors.purple,
+      ),
+    );
   }
 
   @override
@@ -48,9 +99,40 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
           actions: [
             IconButton(
-              key: Key('submit'),
-              onPressed: () => _addPerson(faker.person.name()),
-              icon: Icon(Icons.add),
+              key: Key('find'),
+              tooltip: "Find By random id",
+              onPressed: _findParent,
+              icon: Icon(Icons.find_in_page_outlined),
+            ),
+            IconButton(
+              key: Key('action use case'),
+              tooltip: "Call method in the use case",
+              onPressed: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                        .doStuffInUseCase()),
+                    duration: Duration(milliseconds: 1500),
+                    backgroundColor: Colors.pink,
+                  ),
+                )
+              },
+              icon: Icon(Icons.person),
+            ),
+            IconButton(
+              key: Key('action use case down'),
+              tooltip: "Call method in repo, delegated by the use case",
+              onPressed: () => {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                        .doStuffDeeper()),
+                    duration: Duration(milliseconds: 1500),
+                    backgroundColor: Colors.yellow,
+                  ),
+                )
+              },
+              icon: Icon(Icons.watch),
             )
           ],
         ),
@@ -59,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           key: Key('submit'),
-          onPressed: () => _addPerson(_noteInputController.text),
+          onPressed: _addParent,
           child: Icon(Icons.add),
         ),
       );
@@ -98,13 +180,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text(item.bornDayFormat),
                     ),
                     DataCell(
-                      IconButton(
-                        onPressed: () {
-                          CleanCoreExampleCoreModule.PARENT_USECASE
-                              .destroy(item);
-                          setState(() {});
-                        },
-                        icon: Icon(Icons.delete_forever),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              _editParent(item);
+                            },
+                            icon: Icon(Icons.edit),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              _destroyParent(item);
+                            },
+                            icon: Icon(Icons.delete_forever),
+                          )
+                        ],
                       ),
                     ),
                   ],

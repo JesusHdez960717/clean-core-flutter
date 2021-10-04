@@ -10,4 +10,14 @@ class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain>
   ParentUseCaseImpl(ParentRepo repo)
       : _repo = repo,
         super(repo: repo);
+
+  @override
+  String doStuffInUseCase() {
+    return "Doing Stuff in Use Case";
+  }
+
+  @override
+  String doStuffDeeper() {
+    return _repo.doStuffDeeper();
+  }
 }
