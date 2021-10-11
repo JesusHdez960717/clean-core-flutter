@@ -1,7 +1,7 @@
 import 'package:clean_core/clean_core.dart';
 
-class InMemoryInternalCRUDRepo<Entity extends BasicEntityObject>
-    extends CRUDRepositoryInternal<Entity> {
+class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
+    extends CRUDRepositoryExternal<Entity> {
   final Set<Entity> _list = {};
   int newID = 1;
 

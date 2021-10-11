@@ -14,9 +14,9 @@ export 'repo/entities/Entities.dart';
 export 'app/repo_def/CleanCoreExampleRepoDefExporter.dart';
 export 'repo/repo_impl/RepoImplExporter.dart';
 
-//repo internal
-export 'repo/repo_internal/CleanCoreExampleRepoInternalExporter.dart';
-export 'repo/repo_internal_impl/CleanCoreExampleRepoInternalImplExporter.dart';
+//repo External
+export 'repo/repo_external/CleanCoreExampleRepoInternalExporter.dart';
+export 'repo/repo_external_impl/CleanCoreExampleRepoInternalImplExporter.dart';
 
 //module
 export 'app/module/CleanCoreExampleCoreModule.dart';

@@ -1,18 +1,18 @@
 import 'package:clean_core/clean_core.dart';
 
 ///Default CRUD repository of type Entity extends [BasicEntityObject]
-///for internal operations.
+///for External operations.
 ///Implemented by the framework, the external library of persistence.
 ///
-/// EXAMPLE://todo: change example internal repo in clean-core example
+/// EXAMPLE://todo: change example External repo in clean-core example
 /// ```dart
-///   class ParentRepoInternal
-///       extends ObjectBoxCRUDRespositoryInternal<ParentEntity> {
-///     ParentRepoInternal(Store store) : super(store);
+///   class ParentRepoExternal
+///       extends ObjectBoxCRUDRepositoryExternal<ParentEntity> {
+///     ParentRepoExternal(Store store) : super(store);
 ///   }
 /// ```
-abstract class CRUDRepositoryInternal<Entity extends BasicEntityObject>
-    extends AbstractInternalRepo {
+abstract class CRUDRepositoryExternal<Entity extends BasicEntityObject>
+    extends AbstractExternalRepo {
   ///Create the domain.
   Entity create(Entity newObject);
 

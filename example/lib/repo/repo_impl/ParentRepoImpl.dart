@@ -3,13 +3,13 @@ import 'package:clean_core_example/clean_core_example.dart';
 
 class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
     implements ParentRepo {
-  late ParentRepoInternal _internal;
+  late ParentRepoExternal _External;
 
   ParentRepoImpl()
       : super(
-            internalRepo: ParentRepoInternalImpl(),
+            ExternalRepo: ParentRepoExternalImpl(),
             converter: ParentEntity.CONVERTER) {
-    _internal = internalRepo as ParentRepoInternal;
+    _External = ExternalRepo as ParentRepoExternal;
   }
 
   @override
