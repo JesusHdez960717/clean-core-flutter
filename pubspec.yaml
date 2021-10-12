@@ -1,6 +1,6 @@
 name: clean_core
 description: Standard for implementing clean's architecture
-version: 1.0.0-SNAPSHOT.20211003
+version: 1.0.1-RELEASE.20211011
 homepage: https://github.com/JesusHdezWaterloo/clean-core-flutter.git
 
 environment:
