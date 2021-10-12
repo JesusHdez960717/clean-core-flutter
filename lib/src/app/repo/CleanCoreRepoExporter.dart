@@ -7,7 +7,7 @@ export 'CRUDRepositoryAsync.dart';
 export 'DefaultCRUDRepo.dart';
 export 'DefaultCRUDRepoAsync.dart';
 
-//export internal repo
-export 'internal_repo/AbstractInternalRepo.dart';
-export 'internal_repo/CRUDRepositoryInternal.dart';
-export 'internal_repo/CRUDRepositoryInternalAsync.dart';
+//export External repo
+export 'External_repo/AbstractExternalRepo.dart';
+export 'External_repo/CRUDRepositoryExternal.dart';
+export 'External_repo/CRUDRepositoryExternalAsync.dart';

@@ -2,7 +2,7 @@ import 'package:clean_core/clean_core.dart';
 
 ///Default implementation of [CRUDRepository] of type Domain extends
 ///[BasicDomainObject] & Entity extends [BasicEntityObject]<Domain>
-///It's basically a delegate to the internal repo.
+///It's basically a delegate to the External repo.
 ///
 /// EXAMPLE:
 /// This is the implementation of ParentRepo.
@@ -21,14 +21,14 @@ import 'package:clean_core/clean_core.dart';
 abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity extends BasicEntityObject<Domain>> extends CRUDRepository<Domain> {
   //todo: property change listener
-  ///Internal repo, the one who really do the operations.
-  CRUDRepositoryInternal<Entity> internalRepo;
+  ///External repo, the one who really do the operations.
+  CRUDRepositoryExternal<Entity> ExternalRepo;
 
   ///Converter of this repo, hadler of transaction domain <==> entity
   GeneralConverter<Domain, Entity> converter;
 
   ///Default Constructor
-  DefaultCRUDRepo({required this.internalRepo, required this.converter});
+  DefaultCRUDRepo({required this.ExternalRepo, required this.converter});
 
   ///Create the domain
   ///Return the domain after been persisted, the returned domain have the
@@ -38,11 +38,11 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     ///fire property change listener BEFORE_CREATE
     print("${PropertyChangeConstrains.BEFORE_CREATE}  => $newObject");
 
-    ///convert domain to entity to be compatible with internal repo
+    ///convert domain to entity to be compatible with External repo
     Entity entityToCreate = converter.toEntity(newObject);
 
     ///do the persist
-    Entity entityCreated = internalRepo.create(entityToCreate); //do persist
+    Entity entityCreated = ExternalRepo.create(entityToCreate); //do persist
 
     ///convert back the entity persisted to the domain
     newObject = converter.toDomain(entityCreated);
@@ -58,11 +58,11 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     ///fire property change listener BEFORE_EDIT
     print("${PropertyChangeConstrains.BEFORE_EDIT}  => $objectToEdit");
 
-    ///convert domain to entity to be compatible with internal repo
+    ///convert domain to entity to be compatible with External repo
     Entity entityToEdit = converter.toEntity(objectToEdit);
 
     ///do the update
-    Entity entityEdited = internalRepo.edit(entityToEdit); //do edit
+    Entity entityEdited = ExternalRepo.edit(entityToEdit); //do edit
 
     ///convert back the entity edited to the domain
     objectToEdit = converter.toDomain(entityEdited);
@@ -80,7 +80,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => EmptyList{}");
 
     ///find all entities
-    List<Entity> entityList = internalRepo.findAll();
+    List<Entity> entityList = ExternalRepo.findAll();
 
     ///convert all entities to domains
     List<Domain> domainList = converter.toDomainAll(entityList);
@@ -98,7 +98,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
 
     ///find the entity
-    Entity entityFounded = internalRepo.findBy(keyId);
+    Entity entityFounded = ExternalRepo.findBy(keyId);
 
     ///convert entity to domain
     Domain domainFounded = converter.toDomain(entityFounded);
@@ -118,7 +118,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    Entity entityDestroyed = internalRepo.destroy(entityToDestroy);
+    Entity entityDestroyed = ExternalRepo.destroy(entityToDestroy);
 
     ///convert the entity back to it's domain
     objectToDestroy = converter.toDomain(entityDestroyed);
@@ -131,6 +131,6 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
   ///Count the amount of domains.
   @override
   int count() {
-    return internalRepo.count();
+    return ExternalRepo.count();
   }
 }
