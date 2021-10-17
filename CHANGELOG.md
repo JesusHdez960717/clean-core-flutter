@@ -5,5 +5,6 @@
   * **IMPROVEMENT** Added documentation to README.md and this CHANGELOG.md
 
 * NEXT VERSION:
-  * **BUG FIX** Issue #1 solved : Fixed images in README.md
-  * **IMPROVEMENT** Issue #4 solved : Agregar exporters al ejemplo
+  * **BUG FIX** :bug: : Issue **#1** solved : Fixed images in README.md
+  * **IMPROVEMENT** :+1: : Issue **#4** solved : Agregar exporters al ejemplo
+  * **IMPROVEMENT** :+1: : Camel Typo: `externalRepo` to lowercase in `app/repo/DefaultCRUDRepo.dart`
