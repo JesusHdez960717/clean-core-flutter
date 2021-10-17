@@ -7,9 +7,9 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
 
   ParentRepoImpl()
       : super(
-            ExternalRepo: ParentRepoExternalImpl(),
+            externalRepo: ParentRepoExternalImpl(),
             converter: ParentEntity.CONVERTER) {
-    _External = ExternalRepo as ParentRepoExternal;
+    _External = externalRepo as ParentRepoExternal;
   }
 
   @override

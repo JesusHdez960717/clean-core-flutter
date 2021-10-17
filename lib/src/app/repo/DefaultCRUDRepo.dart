@@ -22,13 +22,13 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity extends BasicEntityObject<Domain>> extends CRUDRepository<Domain> {
   //todo: property change listener
   ///External repo, the one who really do the operations.
-  CRUDRepositoryExternal<Entity> ExternalRepo;
+  CRUDRepositoryExternal<Entity> externalRepo;
 
   ///Converter of this repo, hadler of transaction domain <==> entity
   GeneralConverter<Domain, Entity> converter;
 
   ///Default Constructor
-  DefaultCRUDRepo({required this.ExternalRepo, required this.converter});
+  DefaultCRUDRepo({required this.externalRepo, required this.converter});
 
   ///Create the domain
   ///Return the domain after been persisted, the returned domain have the
@@ -42,7 +42,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity entityToCreate = converter.toEntity(newObject);
 
     ///do the persist
-    Entity entityCreated = ExternalRepo.create(entityToCreate); //do persist
+    Entity entityCreated = externalRepo.create(entityToCreate); //do persist
 
     ///convert back the entity persisted to the domain
     newObject = converter.toDomain(entityCreated);
@@ -62,7 +62,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity entityToEdit = converter.toEntity(objectToEdit);
 
     ///do the update
-    Entity entityEdited = ExternalRepo.edit(entityToEdit); //do edit
+    Entity entityEdited = externalRepo.edit(entityToEdit); //do edit
 
     ///convert back the entity edited to the domain
     objectToEdit = converter.toDomain(entityEdited);
@@ -80,7 +80,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => EmptyList{}");
 
     ///find all entities
-    List<Entity> entityList = ExternalRepo.findAll();
+    List<Entity> entityList = externalRepo.findAll();
 
     ///convert all entities to domains
     List<Domain> domainList = converter.toDomainAll(entityList);
@@ -98,7 +98,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
 
     ///find the entity
-    Entity entityFounded = ExternalRepo.findBy(keyId);
+    Entity entityFounded = externalRepo.findBy(keyId);
 
     ///convert entity to domain
     Domain domainFounded = converter.toDomain(entityFounded);
@@ -118,7 +118,7 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    Entity entityDestroyed = ExternalRepo.destroy(entityToDestroy);
+    Entity entityDestroyed = externalRepo.destroy(entityToDestroy);
 
     ///convert the entity back to it's domain
     objectToDestroy = converter.toDomain(entityDestroyed);
@@ -131,6 +131,6 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
   ///Count the amount of domains.
   @override
   int count() {
-    return ExternalRepo.count();
+    return externalRepo.count();
   }
 }
