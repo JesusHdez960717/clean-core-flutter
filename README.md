@@ -31,7 +31,7 @@ A continuación un diagrama con la vista general de la arquitectura, mostrando l
 ## Implementació basica de la arquitectura
 A continuación el diagrama al estilo UML con una implementación de ejemplo.
 
-![Implementación Arquitectura UML](docs/Architecture_UML.png)
+![](docs/Architecture_UML.png "Implementación Arquitectura UML")
 
 ### Leyenda #2:
 - `ParentUseCase`: Clase abstracta (interfaz) para **definir** los métodos de la lógica.
