@@ -17,7 +17,7 @@ Esta implementación de la arquitectura que se presenta **NO** sigue al pie de l
 ## Vista general de la arquitectura
 A continuación un diagrama con la vista general de la arquitectura, mostrando las principales capas con flujo de entrada descendente y de respuesta ascendente.
 
-![Arquitectura General](docs/General_Architecture.png)
+[](docs/General_Architecture.png "Arquitectura General")
 
 ### Leyenda #1:
 - `User input`: Entrada del usuario, puede ser por seleccionar una acción en la UI, como cargar una lista con cierta información.
