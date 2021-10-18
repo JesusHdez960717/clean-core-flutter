@@ -17,7 +17,7 @@ Esta implementación de la arquitectura que se presenta **NO** sigue al pie de l
 ## Vista general de la arquitectura
 A continuación un diagrama con la vista general de la arquitectura, mostrando las principales capas con flujo de entrada descendente y de respuesta ascendente.
 
-![](docs/General_Architecture.PNG?raw=true "Arquitectura General")
+![](doc/General_Architecture.PNG?raw=true "Arquitectura General")
 
 ### Leyenda #1:
 - `User input`: Entrada del usuario, puede ser por seleccionar una acción en la UI, como cargar una lista con cierta información.
@@ -31,7 +31,7 @@ A continuación un diagrama con la vista general de la arquitectura, mostrando l
 ## Implementació basica de la arquitectura
 A continuación el diagrama al estilo UML con una implementación de ejemplo.
 
-![](docs/Impl_Architecture_UML.PNG "Implementación Arquitectura UML")
+![](doc/Impl_Architecture_UML.PNG "Implementación Arquitectura UML")
 
 ### Leyenda #2:
 - `ParentUseCase`: Clase abstracta (interfaz) para **definir** los métodos de la lógica.

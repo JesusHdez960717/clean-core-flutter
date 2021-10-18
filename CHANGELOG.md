@@ -1,3 +1,6 @@
+* NEXT VERSION:
+  * **IMPROVEMENT** Rename `docs` folder to `doc` to avoid flutter pug publish warning 
+
 * 1.1.0-RELEASE.20211017:
   * **BUG FIX** :bug: : [Issue **#1**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/1) solved : Fixed images in README.md
   * **IMPROVEMENT** :+1: : [Issue **#4**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/4) solved : Agregar exporters al ejemplo
