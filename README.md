@@ -1,6 +1,6 @@
 # clean_core (for dart/flutter)
 
-`clean_core` (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo **UNA VARIANTE** de [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) presentada por [Robert C. Martin (Uncle Bob)](https://en.wikipedia.org/wiki/Robert_C._Martin), explicada en su libro [Clean Architecture](http://prof.mau.ac.ir/images/Uploaded_files/Clean%20Architecture_%20A%20Craftsman%E2%80%99s%20Guide%20to%20Software%20Structure%20and%20Design-Pearson%20Education%20(2018)%5B7615523%5D.PDF).
+`clean_core` (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo **UNA VARIANTE** de [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) presentada por [Robert C. Martin (Uncle Bob)](https://en.wikipedia.org/wiki/Robert_C._Martin), explicada en su libro [Clean Architecture](https://sites.google.com/eq.greatbooklibrary.com/budalngaret35/pdfbook-download-clean-architecture-by-robert-c-martin).
 Esta implementación de la arquitectura que se presenta **NO** sigue al pie de la letra sus estándares, es sino una abstracción adaptada a las comodidades propias de sus desarrolladores.
 
 ## Table of Contents

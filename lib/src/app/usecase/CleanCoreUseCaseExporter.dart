@@ -7,4 +7,3 @@ export 'CRUDUseCaseAsync.dart';
 export 'DefaultCRUDUseCase.dart';
 export 'DefaultCRUDUseCaseAsync.dart';
 export '../PropertyChangeConstrains.dart';
-

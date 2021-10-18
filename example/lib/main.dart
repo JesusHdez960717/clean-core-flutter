@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final faker = Faker();
 
   void _addParent() {
-    CleanCoreExampleCoreModule.PARENT_USECASE.create(ParentDomain(
+    CleanCoreExampleCoreModule.parentUseCase.create(ParentDomain(
         name: faker.person.name(),
         bornDay: faker.date.dateTime(minYear: 1980, maxYear: 2000)));
     setState(() {
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _editParent(ParentDomain parent) {
     parent.name = faker.person.name();
 
-    CleanCoreExampleCoreModule.PARENT_USECASE.edit(parent);
+    CleanCoreExampleCoreModule.parentUseCase.edit(parent);
     setState(() {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -58,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _destroyParent(ParentDomain parent) {
     ParentDomain dest =
-        CleanCoreExampleCoreModule.PARENT_USECASE.destroy(parent);
+        CleanCoreExampleCoreModule.parentUseCase.destroy(parent);
     setState(() {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              "deleted $dest, length: ${CleanCoreExampleCoreModule.PARENT_USECASE.count()}"),
+              "deleted $dest, length: ${CleanCoreExampleCoreModule.parentUseCase.count()}"),
           backgroundColor: Colors.red,
         ),
       );
@@ -72,11 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _findParent() {
     List<ParentDomain> all =
-        CleanCoreExampleCoreModule.PARENT_USECASE.findAll();
+        CleanCoreExampleCoreModule.parentUseCase.findAll();
     ParentDomain randomParent = all[Random().nextInt(all.length)];
 
     ParentDomain selectedParent =
-        CleanCoreExampleCoreModule.PARENT_USECASE.findBy(randomParent.id);
+        CleanCoreExampleCoreModule.parentUseCase.findBy(randomParent.id);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                    content: Text(CleanCoreExampleCoreModule.parentUseCase
                         .doStuffInUseCase()),
                     duration: Duration(milliseconds: 1500),
                     backgroundColor: Colors.pink,
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(CleanCoreExampleCoreModule.PARENT_USECASE
+                    content: Text(CleanCoreExampleCoreModule.parentUseCase
                         .doStuffDeeper()),
                     duration: Duration(milliseconds: 1500),
                     backgroundColor: Colors.yellow,
@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: generateList(
-          CleanCoreExampleCoreModule.PARENT_USECASE.findAll(),
+          CleanCoreExampleCoreModule.parentUseCase.findAll(),
         ),
         floatingActionButton: FloatingActionButton(
           key: Key('submit'),
