@@ -4,7 +4,8 @@ import 'package:clean_core/clean_core.dart';
 ///for External Async operations.
 ///Implemented by the framework, the external library of persistence.
 abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
-    extends AbstractExternalRepo {//todo: example
+    extends AbstractExternalRepo {
+  //todo: example
   ///Create the domain.
   Future<Entity> create(Entity newObject);
 

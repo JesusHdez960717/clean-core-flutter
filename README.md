@@ -1,6 +1,6 @@
 # clean_core (for dart/flutter)
 
-`clean_core` (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo **UNA VARIANTE** de [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) presentada por [Robert C. Martin (Uncle Bob)](https://en.wikipedia.org/wiki/Robert_C._Martin), explicada en su libro [Clean Architecture](http://prof.mau.ac.ir/images/Uploaded_files/Clean%20Architecture_%20A%20Craftsman%E2%80%99s%20Guide%20to%20Software%20Structure%20and%20Design-Pearson%20Education%20(2018)%5B7615523%5D.PDF).
+`clean_core` (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo **UNA VARIANTE** de [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) presentada por [Robert C. Martin (Uncle Bob)](https://en.wikipedia.org/wiki/Robert_C._Martin), explicada en su libro [Clean Architecture](https://sites.google.com/eq.greatbooklibrary.com/budalngaret35/pdfbook-download-clean-architecture-by-robert-c-martin).
 Esta implementación de la arquitectura que se presenta **NO** sigue al pie de la letra sus estándares, es sino una abstracción adaptada a las comodidades propias de sus desarrolladores.
 
 ## Table of Contents
@@ -17,7 +17,7 @@ Esta implementación de la arquitectura que se presenta **NO** sigue al pie de l
 ## Vista general de la arquitectura
 A continuación un diagrama con la vista general de la arquitectura, mostrando las principales capas con flujo de entrada descendente y de respuesta ascendente.
 
-![](readme_resources/General_Architecture.png "Arquitectura General")
+![](docs/General_Architecture.PNG?raw=true "Arquitectura General")
 
 ### Leyenda #1:
 - `User input`: Entrada del usuario, puede ser por seleccionar una acción en la UI, como cargar una lista con cierta información.
@@ -31,7 +31,7 @@ A continuación un diagrama con la vista general de la arquitectura, mostrando l
 ## Implementació basica de la arquitectura
 A continuación el diagrama al estilo UML con una implementación de ejemplo.
 
-![](readme_resources/Architecture_UML.png "Implementación Arquitectura UML")
+![](docs/Impl_Architecture_UML.PNG "Implementación Arquitectura UML")
 
 ### Leyenda #2:
 - `ParentUseCase`: Clase abstracta (interfaz) para **definir** los métodos de la lógica.
