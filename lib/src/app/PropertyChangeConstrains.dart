@@ -1,4 +1,4 @@
-class PropertyChangeConstrains{
+class PropertyChangeConstrains {
   //-----------------------    For CRUD    -----------------------\\
   //create
   static const String BEFORE_CREATE = "before_create";
@@ -36,7 +36,6 @@ class PropertyChangeConstrains{
   //write
   static const String BEFORE_WRITE = "before_write";
   static const String AFTER_WRITE = "after_write";
-
 }
 /*
 enum PropertyChangeConstrains{
