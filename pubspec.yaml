@@ -1,5 +1,5 @@
 name: clean_core
-description: "`clean_core` (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo **UNA VARIANTE** de Clean Architecture presentada por Robert C. Martin (Uncle Bob), explicada en su libro Clean Architecture. Esta implementación de la arquitectura que se presenta **NO** sigue al pie de la letra sus estándares, es sino una abstracción adaptada a las comodidades propias de sus desarrolladores."
+description: "`clean_core` es framework para estructurar y organizar el código de una aplicación siguiendo UNA VARIANTE de Clean Architecture de Robert C. Martin (Uncle Bob)"
 version: 1.1.0-RELEASE.20211017
 homepage: https://github.com/JesusHdezWaterloo/clean-core-flutter
 
