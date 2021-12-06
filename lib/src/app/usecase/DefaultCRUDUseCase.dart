@@ -13,14 +13,14 @@ import 'package:clean_core/clean_core.dart';
 ///     implements ParentUseCase {
 ///      late ParentRepo _repo;
 ///
-///   ParentUseCaseImpl(ParentRepo repo)
-///       : _repo = repo,
-///         super(repo: repo);
+///     ParentUseCaseImpl(ParentRepo repo)
+///         : _repo = repo,
+///           super(repo: repo);
 ///
-///   void doStuffInUseCase(){
-///         print('Doing Stuff in the use case layer...');
+///     void doStuffInUseCase(){
+///        print('Doing Stuff in the use case layer...');
+///     }
 ///   }
-/// }
 /// ```
 abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
     extends CRUDUseCase<Domain> {

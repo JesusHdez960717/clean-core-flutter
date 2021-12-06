@@ -17,3 +17,5 @@ example/.packages
 example/.pub/
 
 example/build/
+
+example/lib/experimental/

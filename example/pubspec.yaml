@@ -1,6 +1,5 @@
 name: clean_core_example
 description: Demonstrates how to use the clean_core plugin.
-
 publish_to: 'none'
 
 environment:
