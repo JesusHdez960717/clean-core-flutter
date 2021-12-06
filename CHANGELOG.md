@@ -1,3 +1,6 @@
+* 1.1.2-SNAPSHOT.20211206:
+  * **BUG FIX** :bug: : Fix bug in `DefaultReadUseCase`, Fix extends to `ReadUseCase<Domain>` instead of CRUD.
+
 * 1.1.1-SNAPSHOT.20211206:
   * **IMPROVEMENT** Rename `docs` folder to `doc` to avoid flutter pug publish warning .
   * **IMPROVEMENT** Fix description length btw [60,180] chars in pubspec.yaml to score in Dart file conventions at pub.dev.
