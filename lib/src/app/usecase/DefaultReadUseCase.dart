@@ -22,15 +22,15 @@ import 'package:clean_core/clean_core.dart';
 /// ```
 abstract class DefaultReadUseCase<Domain extends BasicDomainObject>
     extends CRUDUseCase<Domain> {
-  List<Domain> info;
+  List<Domain> _info;
 
-  DefaultReadUseCase({required this.info});
+  DefaultReadUseCase(this._info);
 
   @override
   List<Domain> findAll() {
-    print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => $info");
+    print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => $_info");
 
-    List<Domain> list = List.unmodifiable(info);
+    List<Domain> list = List.unmodifiable(_info);
 
     print("${PropertyChangeConstrains.AFTER_FIND_ALL}  => $list");
     return list;
@@ -40,7 +40,7 @@ abstract class DefaultReadUseCase<Domain extends BasicDomainObject>
   Domain findBy(int keyId) {
     print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
 
-    Domain object = info.firstWhere((element) => element.id == keyId);
+    Domain object = _info.firstWhere((element) => element.id == keyId);
 
     print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
     return object;
@@ -48,6 +48,6 @@ abstract class DefaultReadUseCase<Domain extends BasicDomainObject>
 
   @override
   int count() {
-    return info.length;
+    return _info.length;
   }
 }
