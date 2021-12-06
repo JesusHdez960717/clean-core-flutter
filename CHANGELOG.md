@@ -1,6 +1,7 @@
-* NEXT VERSION:
+* 1.1.1-SNAPSHOT.20211206:
   * **IMPROVEMENT** Rename `docs` folder to `doc` to avoid flutter pug publish warning .
   * **IMPROVEMENT** Fix description length btw [60,180] chars in pubspec.yaml to score in Dart file conventions at pub.dev.
+  * **IMPROVEMENT** Added the `ReadUseCase` and `DefaultReadUseCase` to abstract to the general logic of the UseCase the scenario when exists a single list with inmutables object
 
 * 1.1.0-RELEASE.20211017:
   * **BUG FIX** :bug: : [Issue **#1**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/1) solved : Fixed images in README.md.
