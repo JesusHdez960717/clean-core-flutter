@@ -29,6 +29,6 @@ abstract class BasicDomainObject<T extends IntIdentifier> extends DomainObject
   }
 
   T clone() {
-    throw UnimplementedError();
+    throw UnimplementedError("$this don't override super.clone()");
   }
 }
