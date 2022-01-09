@@ -39,4 +39,8 @@ abstract class CRUDRepository<Domain extends BasicDomainObject>
   int count() {
     return findAll().length;
   }
+
+  void init();
+
+  void dispose();
 }
