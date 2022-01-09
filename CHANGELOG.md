@@ -1,3 +1,10 @@
+* 1.1.3-SNAPSHOT.20220109:
+  * **IMPROVEMENT** : Added clone() for `BasicDomainObject` and enforce it in DefaultReadUseCase.
+  * **IMPROVEMENT** : Added init() and dispose() in UseCases and Repos and it's default empty implementation.
+  * **IMPROVEMENT** : Rename all files to lowercase.
+  * **IMPROVEMENT** : Added dartdoc support and fixed (suppose) all pub points.
+  * **IMPROVEMENT** : Fixed example with changes.
+
 * 1.1.2-SNAPSHOT.20211206:
   * **BUG FIX** :bug: : Fix bug in `DefaultReadUseCase`, Fix extends to `ReadUseCase<Domain>` instead of CRUD.
 
