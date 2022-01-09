@@ -82,4 +82,10 @@ class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
   int count() {
     return _list.length;
   }
+
+  @override
+  void dispose() {}
+
+  @override
+  void init() {}
 }
