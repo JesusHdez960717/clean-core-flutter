@@ -68,6 +68,10 @@ abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
     return objectToDestroy;
   }
 
+  void init() {}
+
+  void dispose() {}
+
   @override
   int count() {
     return repo.count();

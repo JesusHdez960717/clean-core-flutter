@@ -48,6 +48,10 @@ abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
     return objectToDestroy;
   }
 
+  Future<void> init() async {}
+
+  Future<void> dispose() async {}
+
   @override
   Future<int> count() {
     return repo.count();
