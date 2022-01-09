@@ -2,8 +2,6 @@ import 'package:clean_core/clean_core.dart';
 import 'package:clean_core_example/clean_core_example.dart';
 
 class ParentEntity extends BasicEntityObject<ParentDomain> {
-  static final ParentConverter parentConverter = ParentConverter();
-
   int id;
 
   String name;
@@ -26,18 +24,5 @@ class ParentEntity extends BasicEntityObject<ParentDomain> {
   @override
   ParentDomain toDomain() {
     return ParentDomain(id: id, name: name, bornDay: bornDay);
-  }
-}
-
-class ParentConverter
-    extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
-  @override
-  ParentDomain toDomain(ParentEntity entity) {
-    return entity.toDomain();
-  }
-
-  @override
-  ParentEntity toEntity(ParentDomain domain) {
-    return ParentEntity.fromDomain(domain);
   }
 }
