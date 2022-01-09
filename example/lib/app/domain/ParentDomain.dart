@@ -1,7 +1,7 @@
 import 'package:clean_core/clean_core.dart';
 import 'package:intl/intl.dart';
 
-class ParentDomain extends BasicDomainObject {
+class ParentDomain extends BasicDomainObject<ParentDomain> {
   int id;
   String name;
   DateTime bornDay;
@@ -13,5 +13,10 @@ class ParentDomain extends BasicDomainObject {
   @override
   String toString() {
     return 'ParentDomain{name: $name}';
+  }
+
+  @override
+  ParentDomain clone() {
+    return ParentDomain(name: this.name, bornDay: this.bornDay, id: this.id);
   }
 }
