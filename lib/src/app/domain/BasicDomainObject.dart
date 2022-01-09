@@ -20,11 +20,15 @@ import 'package:clean_core/clean_core.dart';
 ///     }
 ///   }
 ///
-abstract class BasicDomainObject extends DomainObject
-    with IntIdentifier, Comparable<BasicDomainObject> {
+abstract class BasicDomainObject<T extends IntIdentifier> extends DomainObject
+    with IntIdentifier, Comparable<T>, Cloneable<T> {
   ///By default compare the two domain by it's id
   @override
-  int compareTo(BasicDomainObject other) {
+  int compareTo(T other) {
     return this.id.compareTo(other.id);
+  }
+
+  T clone() {
+    throw UnimplementedError();
   }
 }
