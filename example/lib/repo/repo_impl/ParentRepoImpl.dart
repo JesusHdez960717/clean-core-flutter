@@ -8,7 +8,7 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
   ParentRepoImpl()
       : super(
             externalRepo: ParentRepoExternalImpl(),
-            converter: ParentConverter.CONVERTER) {
+            converter: ParentConverter.converter) {
     //_external = externalRepo as ParentRepoExternal;//in case of needed
   }
 
@@ -20,7 +20,7 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
 
 class ParentConverter
     extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
-  static final ParentConverter CONVERTER = ParentConverter._();
+  static final ParentConverter converter = ParentConverter._();
 
   ParentConverter._();
 

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 4.1.0">
+  <meta name="description" content="clean_core API docs, for the Dart programming language.">
+  <title>clean_core - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href=""
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/JesusHdezWaterloo/clean-core-flutter">clean_core package</a></li>
+  </ol>
+  <div class="self-name">clean_core</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="clean_core-for-dartflutter">clean_core (for dart/flutter)</h1>
+<p><code>clean_core</code> (for dart/flutter) pretende ser un framework para estructurar y organizar el código de una aplicación siguiendo <strong>UNA VARIANTE</strong> de <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a> presentada por <a href="https://en.wikipedia.org/wiki/Robert_C._Martin">Robert C. Martin (Uncle Bob)</a>, explicada en su libro <a href="https://sites.google.com/eq.greatbooklibrary.com/budalngaret35/pdfbook-download-clean-architecture-by-robert-c-martin">Clean Architecture</a>.
+Esta implementación de la arquitectura que se presenta <strong>NO</strong> sigue al pie de la letra sus estándares, es sino una abstracción adaptada a las comodidades propias de sus desarrolladores.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#Vista-general-de-la-arquitectura">Vista general de la arquitectura</a>
+<ul>
+<li><a href="#leyenda-#1">Leyenda</a></li>
+</ul>
+</li>
+<li><a href="#implementació-basica-de-la-arquitectura">Implementació Basica de la arquitectura</a>
+<ul>
+<li><a href="#leyenda-#2">Leyenda</a></li>
+</ul>
+</li>
+<li>Posteriormente (No implementados en la primera versión):
+<ul>
+<li>Modulos</li>
+<li>Servicios</li>
+<li>Domain validation / Resources</li>
+</ul>
+</li>
+</ul>
+<h2 id="vista-general-de-la-arquitectura">Vista general de la arquitectura</h2>
+<p>A continuación un diagrama con la vista general de la arquitectura, mostrando las principales capas con flujo de entrada descendente y de respuesta ascendente.</p>
+<p><img src="doc/General_Architecture.PNG?raw=true" alt="" title="Arquitectura General"></p>
+<h3 id="leyenda-1">Leyenda #1:</h3>
+<ul>
+<li><code>User input</code>: Entrada del usuario, puede ser por seleccionar una acción en la UI, como cargar una lista con cierta información.</li>
+<li><code>Domain</code>: El Domain va a ser la unidad básica que traslada información, por lo tanto, luego de que el usuario selecciona cargar la lista, este espera una Lista de Domains. Esta capa tiene las validaciones por cada campo del Domain y la lógica básica de formateo de campos (como parseo de fechas y demás).</li>
+<li><code>Use Case</code>: Dicha llamada la va a procesar el Caso de Uso, este necesita la información y se la solicita al repositorio, y una vez el repositorio se la entrega la procesa, ordenándola, uniendola con otros pedazos de información, etc ..., y posteriormente devolviendo esta lista de Domain al usuario. Esta capa también es la encargada de validaciones entre multiples Domain y similares.</li>
+<li><code>Repository</code>: El Caso de Uso llama a la capa de repositorio para obtener la información. Aqui hay una bifurcación entre capas, dado que se necesita acceder a un repositorio externo, con características que no controlamos nosotros ya que está desarrollado por terceros. Como consecuencia, el repositorio se define en la capa interna, con nuestras necesidades, y se implementa en la capa externa, adaptándose a las características del framework específico. Esta capa es la encargada de solicitar la información a dicha entidad externa, recibir su respuesta, y convertirla al Domain que espera el Caso de Uso. Esta capa también es la encargada de cifrar la información o traducirla y similares, en caso de ser necesario.</li>
+<li><code>Entity</code>: Equivalente al Dominio pero para la información de los frameworks externos. Se considera externa ya que puede ser generada por un tercero, o seguir ciertos estándares de otros. En resumen lleva un <code>import</code> de un framework externo.</li>
+<li><code>Repository External</code>: Herramienta de un tercero encargado directamente de la 'persistencia'(intercambio) de la información.</li>
+</ul>
+<h2 id="implementaci-basica-de-la-arquitectura">Implementació basica de la arquitectura</h2>
+<p>A continuación el diagrama al estilo UML con una implementación de ejemplo.</p>
+<p><img src="doc/Impl_Architecture_UML.PNG" alt="" title="Implementación Arquitectura UML"></p>
+<h3 id="leyenda-2">Leyenda #2:</h3>
+<ul>
+<li><code>ParentUseCase</code>: Clase abstracta (interfaz) para <strong>definir</strong> los métodos de la lógica.</li>
+<li><code>ParentDomain</code>: Unidad atómica de Parent.</li>
+<li><code>ParentUseCaseImplementation</code>: <strong>Implementación</strong> de lo que se definió en <code>ParentUseCase</code>. Esta implementación tiene una dependencia directa al repositorio, ya que a este se le van a hacer las llamadas para obtener la información. <strong>PERO</strong> la dependencia es solo a la definición del repositorio, que forma parte de la capa interna, en runtime se le inyecta al Caso de Uso en el constructor dicha implementación, para lograr la inversión de control, y no hacer el caso de uso dependiente de la implementacion del repositorio.</li>
+<li><code>ParentRepo</code>: Clase abstracta (interfaz) para <strong>definir</strong> los métodos de acceso al repositorio. Interna ya que la definimos en dependencia de lo que necesitemos en nuestro Use Case y la implementamos con el framework externo.</li>
+<li><code>ParentRepoImplementation</code>: <strong>Implementación</strong> de lo que se definió en <code>ParentRepo</code>. También tiene como en el Caso de Uso la dependencia del Repo externo, pero solo su definición, la implementación se inyecta igual que en el caso del Caso</li>
+<li><code>ParentRepoExternal</code>: Clase abstracta (interfaz) para <strong>definir</strong> los métodos necesarios propios del framework externos de repositorio.</li>
+<li><code>ParentRepoExternalImplementation</code>: <strong>Implementación</strong> de lo que se definió en <code>ParentRepoExternal</code>.</li>
+</ul>
+<h3 id="detalles-de-implementacin">Detalles de implementación</h3>
+<p>Los detalles de implementación se pueden encontrar en el <a href="https://github.com/JesusHdezWaterloo/clean-core-flutter/tree/develop/example">ejemplo</a></p>
+<h2 id="posteriormente-no-implementados-en-la-primera-versin">Posteriormente (No implementados en la primera versión)</h2>
+<h3 id="modules">Modules</h3>
+<h3 id="application-service">Application Service</h3>
+<h4 id="authentication">Authentication</h4>
+<h4 id="exception">Exception</h4>
+<h4 id="notification">Notification</h4>
+<h4 id="user-resolver">User Resolver</h4>
+<h3 id="domain">Domain</h3>
+<h4 id="resource-service">Resource Service</h4>
+<h4 id="validations">Validations</h4>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="clean_core">
+  <span class="name"><a href="clean_core/clean_core-library.html">clean_core</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="clean_core_web">
+  <span class="name"><a href="clean_core_web/clean_core_web-library.html">clean_core_web</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="https://github.com/JesusHdezWaterloo/clean-core-flutter">clean_core package</a></li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">clean_core</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="clean_core/clean_core-library.html">clean_core</a></li>
+      <li><a href="clean_core_web/clean_core_web-library.html">clean_core_web</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    clean_core
+      1.1.2-SNAPSHOT.20211206
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
