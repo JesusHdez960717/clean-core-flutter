@@ -133,4 +133,8 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
   int count() {
     return externalRepo.count();
   }
+
+  void init() {}
+
+  void dispose() {}
 }

@@ -29,4 +29,8 @@ abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
   Future<int> count() async {
     return findAll().then((value) => value.length);
   }
+
+  Future<void> init();
+
+  Future<void> dispose();
 }

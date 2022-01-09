@@ -26,4 +26,8 @@ abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
   Future<int> count() async {
     return findAll().then((value) => value.length);
   }
+
+  void init() {}
+
+  void dispose() {}
 }

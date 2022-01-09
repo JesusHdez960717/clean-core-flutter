@@ -50,4 +50,8 @@ abstract class DefaultReadUseCase<Domain extends BasicDomainObject<Domain>>
   int count() {
     return _info.length;
   }
+
+  void init() {}
+
+  void dispose() {}
 }

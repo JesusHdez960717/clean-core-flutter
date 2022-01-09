@@ -33,4 +33,8 @@ abstract class CRUDRepositoryExternal<Entity extends BasicEntityObject>
   int count() {
     return findAll().length;
   }
+
+  void init();
+
+  void dispose();
 }
