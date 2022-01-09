@@ -1,8 +1,7 @@
 import 'package:clean_core/clean_core.dart';
 import 'package:intl/intl.dart';
 
-class ParentDomain extends BasicDomainObject
-    implements Cloneable<ParentDomain> {
+class ParentDomain extends BasicDomainObject<ParentDomain> {
   int id;
   String name;
   DateTime bornDay;
