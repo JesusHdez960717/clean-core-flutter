@@ -8,12 +8,29 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
   ParentRepoImpl()
       : super(
             externalRepo: ParentRepoExternalImpl(),
-            converter: ParentEntity.parentConverter) {
+            converter: ParentConverter.CONVERTER) {
     //_external = externalRepo as ParentRepoExternal;//in case of needed
   }
 
   @override
   String doStuffDeeper() {
     return "Doing Stuff Super deep, can go deeper";
+  }
+}
+
+class ParentConverter
+    extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
+  static final ParentConverter CONVERTER = ParentConverter._();
+
+  ParentConverter._();
+
+  @override
+  ParentDomain toDomain(ParentEntity entity) {
+    return entity.toDomain();
+  }
+
+  @override
+  ParentEntity toEntity(ParentDomain domain) {
+    return ParentEntity.fromDomain(domain);
   }
 }
