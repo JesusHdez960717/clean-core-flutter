@@ -1,14 +1,11 @@
 library clean_core;
 
-export 'src/app/repo/entity/CleanCoreEntityExporter.dart';
-export 'src/app/repo/CleanCoreRepoExporter.dart';
-export 'src/app/usecase/CleanCoreUseCaseExporter.dart';
-export 'src/app/domain/CleanCoreDomainExporter.dart';
-export 'src/utils/repo_impl/InMemoryExternalCRUDRepo.dart';
-
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+
+export 'src/app/clean_app_exporter.dart';
+export 'src/utils/repo_impl/repo_impl_exporter.dart';
 
 class CleanCore {
   static const MethodChannel _channel = const MethodChannel('clean_core');
