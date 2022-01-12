@@ -26,11 +26,12 @@ class ParentConverter
 
   @override
   ParentDomain toDomain(ParentEntity entity) {
-    return entity.toDomain();
+    return ParentDomain(
+        name: entity.name, bornDay: entity.bornDay, id: entity.id);
   }
 
   @override
   ParentEntity toEntity(ParentDomain domain) {
-    return ParentEntity.fromDomain(domain);
+    return ParentEntity(domain.name, domain.bornDay, id: domain.id);
   }
 }
