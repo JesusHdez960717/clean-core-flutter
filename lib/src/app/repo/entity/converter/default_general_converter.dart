@@ -11,26 +11,24 @@ import 'package:clean_core/clean_core.dart';
 ///     extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
 ///   @override
 ///   ParentDomain toDomain(ParentEntity entity) {
-///     return entity.toDomain();
+///     return ParentDomain(
+///         name: entity.name, bornDay: entity.bornDay, id: entity.id);
 ///   }
 ///
 ///   @override
 ///   ParentEntity toEntity(ParentDomain domain) {
-///     return ParentEntity.fromDomain(domain);
+///     return ParentEntity(domain.name, domain.bornDay, id: domain.id);
 ///   }
 /// }
 /// ```
 ///
 class DefaultGeneralConverter<Domain extends BasicDomainObject,
-        Entity extends BasicEntityObject<Domain>>
-    extends GeneralConverter<Domain, Entity> {
-  ///By default calling Entity.toDomain()
+    Entity extends BasicEntityObject> extends GeneralConverter<Domain, Entity> {
   @override
   Domain toDomain(Entity entity) {
-    return entity.toDomain();
+    throw UnimplementedError("no se ha implementado"); //todo: implement
   }
 
-  ///By default ....
   @override
   Entity toEntity(Domain domain) {
     throw UnimplementedError("no se ha implementado"); //todo: implement
