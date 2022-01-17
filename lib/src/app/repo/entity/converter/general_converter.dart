@@ -5,7 +5,7 @@ import 'package:clean_core/clean_core.dart';
 ///
 /// See [DefaultGeneralConverter] for simple implementation example
 abstract class GeneralConverter<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject<Domain>> {
+    Entity extends BasicEntityObject> {
   ///Convert entity into domain.
   Domain toDomain(Entity entity);
 

@@ -19,7 +19,7 @@ import 'package:clean_core/clean_core.dart';
 ///   }
 /// ```
 abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject<Domain>> extends CRUDRepository<Domain> {
+    Entity extends BasicEntityObject> extends CRUDRepository<Domain> {
   //todo: property change listener
   ///External repo, the one who really do the operations.
   CRUDRepositoryExternal<Entity> externalRepo;
