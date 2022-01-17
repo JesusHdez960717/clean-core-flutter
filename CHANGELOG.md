@@ -1,4 +1,7 @@
-* LATEST:
+* 1.2.1-SNAPSHOT.20220116:
+  * **BUG FIX** :bug: : Fix CHANGELOG
+
+* 1.2.0-SNAPSHOT.20220116:
   * **IMPROVEMENT** : [Issue **#14**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/14) solved : Removed converter from entity, the responsability of convert an entity into a domain and vice versa if of the GeneralConverter, not the entity itself.
 
 * 1.1.3-SNAPSHOT.20220109:
