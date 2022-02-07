@@ -27,31 +27,18 @@ abstract class DefaultReadUseCase<Domain extends BasicDomainObject<Domain>>
   DefaultReadUseCase(this._info);
 
   @override
-  List<Domain> findAll() {
-    print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => $_info");
-
-    List<Domain> list = _info.map((e) => e.clone()).toList();
-
-    print("${PropertyChangeConstrains.AFTER_FIND_ALL}  => $list");
-    return list;
-  }
+  List<Domain> findAll() => _info.map((e) => e.clone()).toList();
 
   @override
-  Domain findBy(int keyId) {
-    print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
-
-    Domain object = _info.firstWhere((element) => element.id == keyId).clone();
-
-    print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
-    return object;
-  }
+  Domain findBy(int keyId) =>
+      _info.firstWhere((element) => element.id == keyId).clone();
 
   @override
-  int count() {
-    return _info.length;
-  }
+  int count() => _info.length;
 
+  @override
   void init() {}
 
+  @override
   void dispose() {}
 }

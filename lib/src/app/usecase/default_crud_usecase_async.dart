@@ -9,51 +9,28 @@ abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
   DefaultCRUDUseCaseAsync({required this.repo});
 
   @override
-  Future<Domain> create(Domain newObject) async {
-    print("${PropertyChangeConstrains.BEFORE_CREATE}  => $newObject");
-    newObject = await repo.create(newObject);
-    print("${PropertyChangeConstrains.AFTER_CREATE}  => $newObject");
-    return newObject;
-  }
+  Future<Domain> create(Domain newObject) async => await repo.create(newObject);
 
   @override
-  Future<Domain> edit(Domain objectToEdit) async {
-    print("${PropertyChangeConstrains.BEFORE_EDIT}  => $objectToEdit");
-    Domain domain = await repo.edit(objectToEdit);
-    print("${PropertyChangeConstrains.AFTER_EDIT}  => $objectToEdit");
-    return domain;
-  }
+  Future<Domain> edit(Domain objectToEdit) async =>
+      await repo.edit(objectToEdit);
 
   @override
-  Future<List<Domain>> findAll() async {
-    print("${PropertyChangeConstrains.BEFORE_FIND_ALL}  => EmptyList{}");
-    List<Domain> list = await repo.findAll();
-    print("${PropertyChangeConstrains.AFTER_FIND_ALL}  => $list");
-    return list;
-  }
+  Future<List<Domain>> findAll() async => await repo.findAll();
 
   @override
-  Future<Domain> findBy(int keyId) async {
-    print("${PropertyChangeConstrains.BEFORE_FIND_BY}  => $keyId");
-    Domain object = await repo.findBy(keyId);
-    print("${PropertyChangeConstrains.AFTER_FIND_BY}  => $keyId");
-    return object;
-  }
+  Future<Domain> findBy(int keyId) async => await repo.findBy(keyId);
 
   @override
-  Future<Domain> destroy(Domain objectToDestroy) async {
-    print("${PropertyChangeConstrains.BEFORE_DESTROY}  => $objectToDestroy");
-    objectToDestroy = await repo.destroy(objectToDestroy);
-    print("${PropertyChangeConstrains.AFTER_DESTROY}  => $objectToDestroy");
-    return objectToDestroy;
-  }
+  Future<Domain> destroy(Domain objectToDestroy) async =>
+      await repo.destroy(objectToDestroy);
 
+  @override
   Future<void> init() async {}
 
+  @override
   Future<void> dispose() async {}
 
   @override
-  Future<int> count() {
-    return repo.count();
-  }
+  Future<int> count() => repo.count();
 }

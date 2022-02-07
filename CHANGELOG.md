@@ -1,3 +1,7 @@
+* 1.2.2-SNAPSHOT.20220206:
+  * **BUG FIX** :bug: : [Issue **#16**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/16) solved :Removed all unnecessary print
+  * **IMPROVEMENT** : [Issue **#15**](https://github.com/JesusHdezWaterloo/clean-core-flutter/issues/15) solved : Implemented a default version of `operator ==` in `BasicDomainObject`, comparing the two domains by it's type and id's
+
 * 1.2.1-SNAPSHOT.20220116:
   * **BUG FIX** :bug: : Fix CHANGELOG
 
