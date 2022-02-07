@@ -1,6 +1,6 @@
 name: clean_core
 description: "`clean_core` es framework para estructurar y organizar el código de una aplicación siguiendo UNA VARIANTE de Clean Architecture de Robert C. Martin (Uncle Bob)"
-version: 1.2.2-RELEASE.20220206
+version: 1.2.3-RELEASE.20220206
 homepage: https://github.com/JesusHdezWaterloo/clean-core-flutter
 
 environment:
