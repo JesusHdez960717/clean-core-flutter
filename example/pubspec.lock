@@ -35,7 +35,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.2.0-SNAPSHOT.20220116"
+    version: "1.2.3-RELEASE.20220206"
   clock:
     dependency: transitive
     description:
