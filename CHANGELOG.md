@@ -1,3 +1,6 @@
+* 1.2.2-SNAPSHOT.20220206:
+  * **BUG FIX** :bug: : Removed all unnecessary print
+
 * 1.2.1-SNAPSHOT.20220116:
   * **BUG FIX** :bug: : Fix CHANGELOG
 
