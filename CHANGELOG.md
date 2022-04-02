@@ -1,3 +1,6 @@
+* 1.2.4-RELEASE.20220000:
+    * **IMPROVEMENT** :raised_hands: : Removed `DefaultGeneralConverter`, use instead `GeneralConverter`.
+
 * 1.2.3-RELEASE.20220206:
     * **BUG FIX** :bug: : Fix version number in Changelog.md
 

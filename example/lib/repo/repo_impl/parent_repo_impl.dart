@@ -18,8 +18,7 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
   }
 }
 
-class ParentConverter
-    extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
+class ParentConverter extends GeneralConverter<ParentDomain, ParentEntity> {
   static final ParentConverter converter = ParentConverter._();
 
   ParentConverter._();
