@@ -6,19 +6,19 @@ import 'package:clean_core/clean_core.dart';
 abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
     extends AbstractExternalRepo {
   //todo: example
-  ///Create the domain.
+  ///Create the entity.
   Future<Entity> create(Entity newObject);
 
-  ///Edit the domain.
+  ///Edit the entity.
   Future<Entity> edit(Entity objectToEdit);
 
-  ///Destroy the domain.
+  ///Destroy the entity.
   Future<Entity> destroy(Entity objectToDestroy);
 
-  ///Find the correspondent domain by it's Key Id.
+  ///Find the correspondent entity by it's Key Id.
   Future<Entity> findBy(int keyId);
 
-  ///Find all domains.
+  ///Find all entities.
   Future<List<Entity>> findAll();
 
   ///Count the amount of domains.
