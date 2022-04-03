@@ -16,7 +16,10 @@ abstract class CRUDUseCaseAsync<Domain extends BasicDomainObject>
   Future<Domain> edit(Domain objectToEdit);
 
   ///Destroy the domain.
-  Future<Domain> destroy(Domain objectToDestroy);
+  Future<void> destroy(Domain objectToDestroy);
+
+  ///Destroy the domain.
+  Future<void> destroyById(int id);
 
   ///Find the correspondent domain by it's Key Id.
   Future<Domain> findBy(int keyId);

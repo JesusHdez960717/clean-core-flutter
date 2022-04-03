@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:clean_core_example/clean_core_example.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:clean_core_example/clean_core_example.dart';
 
 void main() => runApp(MyApp()); //flutter run -t lib/main.dart
 
@@ -57,13 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _destroyParent(ParentDomain parent) {
-    ParentDomain dest =
-        CleanCoreExampleCoreModule.parentUseCase.destroy(parent);
+    CleanCoreExampleCoreModule.parentUseCase.destroy(parent);
     setState(() {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              "deleted $dest, length: ${CleanCoreExampleCoreModule.parentUseCase.count()}"),
+              "deleted $parent, length: ${CleanCoreExampleCoreModule.parentUseCase.count()}"),
           backgroundColor: Colors.red,
         ),
       );
@@ -71,8 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _findParent() {
-    List<ParentDomain> all =
-        CleanCoreExampleCoreModule.parentUseCase.findAll();
+    List<ParentDomain> all = CleanCoreExampleCoreModule.parentUseCase.findAll();
     ParentDomain randomParent = all[Random().nextInt(all.length)];
 
     ParentDomain selectedParent =

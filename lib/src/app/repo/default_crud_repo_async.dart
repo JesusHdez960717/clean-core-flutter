@@ -88,17 +88,19 @@ abstract class DefaultCRUDRepoAsync<Domain extends BasicDomainObject,
 
   ///Destroy the domain.
   @override
-  Future<Domain> destroy(Domain objectToDestroy) async {
+  Future<void> destroy(Domain objectToDestroy) async {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    Entity entityDestroyed = await externalRepo.destroy(entityToDestroy);
+    await externalRepo.destroy(entityToDestroy);
+  }
 
-    ///convert the entity back to it's domain
-    objectToDestroy = converter.toDomain(entityDestroyed);
-
-    return objectToDestroy;
+  ///Destroy the domain.
+  @override
+  Future<void> destroyById(int id) async {
+    ///destroy the entity
+    await externalRepo.destroyById(id);
   }
 
   ///Count the amount of domains.

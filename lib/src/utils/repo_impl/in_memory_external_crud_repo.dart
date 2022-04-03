@@ -31,10 +31,13 @@ class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
       _list.firstWhere((element) => element.id == keyId);
 
   @override
-  Entity destroy(Entity objectToDestroy) {
+  void destroy(Entity objectToDestroy) {
     _list.removeWhere((item) => item.id == objectToDestroy.id);
+  }
 
-    return objectToDestroy;
+  @override
+  void destroyById(int id) {
+    _list.removeWhere((item) => item.id == id);
   }
 
   @override

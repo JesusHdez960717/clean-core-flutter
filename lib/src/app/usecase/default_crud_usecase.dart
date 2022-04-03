@@ -41,7 +41,10 @@ abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
   Domain findBy(int keyId) => repo.findBy(keyId);
 
   @override
-  Domain destroy(Domain objectToDestroy) => repo.destroy(objectToDestroy);
+  void destroy(Domain objectToDestroy) => repo.destroy(objectToDestroy);
+
+  @override
+  void destroyById(int id) => repo.destroyById(id);
 
   @override
   int count() => repo.count();

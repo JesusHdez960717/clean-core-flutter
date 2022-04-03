@@ -88,17 +88,19 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
 
   ///Destroy the domain.
   @override
-  Domain destroy(Domain objectToDestroy) {
+  void destroy(Domain objectToDestroy) {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    Entity entityDestroyed = externalRepo.destroy(entityToDestroy);
+    externalRepo.destroy(entityToDestroy);
+  }
 
-    ///convert the entity back to it's domain
-    objectToDestroy = converter.toDomain(entityDestroyed);
-
-    return objectToDestroy;
+  ///Destroy the domain.
+  @override
+  void destroyById(int id) {
+    ///destroy the entity
+    externalRepo.destroyById(id);
   }
 
   ///Count the amount of domains.
