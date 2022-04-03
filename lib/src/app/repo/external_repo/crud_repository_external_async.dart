@@ -27,7 +27,7 @@ abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
     return findAll().then((value) => value.length);
   }
 
-  void init() {}
+  Future<void> init() async {}
 
-  void dispose() {}
+  Future<void> dispose() async {}
 }
