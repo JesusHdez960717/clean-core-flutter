@@ -1,4 +1,4 @@
-* 1.3.0-RELEASE.20220000:
+* 1.3.0-RELEASE.20220407:
     * **NEW** :+: : Created architecture for Async operations.
     * **NEW** :+: : Created JSONConverter for entities.
     * **IMPROVEMENT** :raised_hands: : Removed `DefaultGeneralConverter`, use instead `GeneralConverter`.
