@@ -1,13 +1,9 @@
 import 'package:clean_core/clean_core.dart';
 import 'package:clean_core_example/clean_core_example.dart';
 
-class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain>
+class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain, ParentRepo>
     implements ParentUseCase {
-  late ParentRepo _repo;
-
-  ParentUseCaseImpl(ParentRepo repo)
-      : _repo = repo,
-        super(repo: repo);
+  ParentUseCaseImpl(ParentRepo repo) : super(repo: repo);
 
   @override
   String doStuffInUseCase() {
@@ -16,6 +12,6 @@ class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain>
 
   @override
   String doStuffDeeper() {
-    return _repo.doStuffDeeper();
+    return repo.doStuffDeeper();
   }
 }

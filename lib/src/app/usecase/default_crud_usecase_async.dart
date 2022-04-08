@@ -2,9 +2,10 @@ import 'package:clean_core/clean_core.dart';
 
 //todo: example
 //todo: doc
-abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
+abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject,
+        CRUDRepo extends CRUDRepositoryAsync<Domain>>
     extends CRUDUseCaseAsync<Domain> {
-  CRUDRepositoryAsync<Domain> repo;
+  CRUDRepo repo;
 
   DefaultCRUDUseCaseAsync({required this.repo});
 
@@ -22,8 +23,11 @@ abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
   Future<Domain> findBy(int keyId) async => await repo.findBy(keyId);
 
   @override
-  Future<Domain> destroy(Domain objectToDestroy) async =>
+  Future<void> destroy(Domain objectToDestroy) async =>
       await repo.destroy(objectToDestroy);
+
+  @override
+  Future<void> destroyById(int id) async => await repo.destroyById(id);
 
   @override
   Future<void> init() async {}

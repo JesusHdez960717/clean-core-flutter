@@ -13,7 +13,10 @@ abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
   Future<Entity> edit(Entity objectToEdit);
 
   ///Destroy the entity.
-  Future<Entity> destroy(Entity objectToDestroy);
+  Future<void> destroy(Entity objectToDestroy);
+
+  ///Destroy the entity by it's id.
+  Future<void> destroyById(int id);
 
   ///Find the correspondent entity by it's Key Id.
   Future<Entity> findBy(int keyId);
@@ -27,7 +30,7 @@ abstract class CRUDRepositoryExternalAsync<Entity extends BasicEntityObject>
     return findAll().then((value) => value.length);
   }
 
-  void init() {}
+  Future<void> init() async {}
 
-  void dispose() {}
+  Future<void> dispose() async {}
 }

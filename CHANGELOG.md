@@ -1,6 +1,9 @@
-* 1.2.4-RELEASE.20220000:
-    * **IMPROVEMENT** :raised_hands: : Removed `DefaultGeneralConverter`, use instead `GeneralConverter`.
+* 1.3.0-RELEASE.20220000:
     * **NEW** :+: : Created architecture for Async operations.
+    * **NEW** :+: : Created JSONConverter for entities.
+    * **IMPROVEMENT** :raised_hands: : Removed `DefaultGeneralConverter`, use instead `GeneralConverter`.
+    * **IMPROVEMENT** :raised_hands: : Created `destroyById`, & `destroy` with void return value.
+    * **IMPROVEMENT** :raised_hands: : Added `CRUDRepo` to type param in `CRUDUseCase` and `CRUDRepoExternal` in `CRUDRepo` for auto cast.
 
 * 1.2.3-RELEASE.20220206:
     * **BUG FIX** :bug: : Fix version number in Changelog.md

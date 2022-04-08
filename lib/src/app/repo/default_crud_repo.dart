@@ -18,11 +18,14 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject> extends CRUDRepository<Domain> {
+abstract class DefaultCRUDRepo<
+        Domain extends BasicDomainObject,
+        Entity extends BasicEntityObject,
+        ExternalRepo extends CRUDRepositoryExternal<Entity>>
+    extends CRUDRepository<Domain> {
   //todo: property change listener
   ///External repo, the one who really do the operations.
-  CRUDRepositoryExternal<Entity> externalRepo;
+  ExternalRepo externalRepo;
 
   ///Converter of this repo, hadler of transaction domain <==> entity
   GeneralConverter<Domain, Entity> converter;
@@ -88,17 +91,19 @@ abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
 
   ///Destroy the domain.
   @override
-  Domain destroy(Domain objectToDestroy) {
+  void destroy(Domain objectToDestroy) {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    Entity entityDestroyed = externalRepo.destroy(entityToDestroy);
+    externalRepo.destroy(entityToDestroy);
+  }
 
-    ///convert the entity back to it's domain
-    objectToDestroy = converter.toDomain(entityDestroyed);
-
-    return objectToDestroy;
+  ///Destroy the domain.
+  @override
+  void destroyById(int id) {
+    ///destroy the entity
+    externalRepo.destroyById(id);
   }
 
   ///Count the amount of domains.
