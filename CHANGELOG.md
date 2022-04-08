@@ -1,5 +1,6 @@
-* 1.3.1-RELEASE.20220407:
+* 1.3.2-RELEASE.20220407:
     * **IMPROVEMENT** :raised_hands: : Upgrade Gradle/Kotlin plugin versions.
+    * **IMPROVEMENT** :raised_hands: : Fix plugin version, skip `1.3.1-RELEASE.20220407 `.
 
 * 1.3.0-RELEASE.20220407:
     * **NEW** :+: : Created architecture for Async operations.
