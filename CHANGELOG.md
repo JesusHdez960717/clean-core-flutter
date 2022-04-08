@@ -1,3 +1,6 @@
+* 1.3.1-RELEASE.20220407:
+    * **IMPROVEMENT** :raised_hands: : Upgrade Gradle/Kotlin plugin versions.
+
 * 1.3.0-RELEASE.20220407:
     * **NEW** :+: : Created architecture for Async operations.
     * **NEW** :+: : Created JSONConverter for entities.
