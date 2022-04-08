@@ -2,9 +2,10 @@ import 'package:clean_core/clean_core.dart';
 
 //todo: example
 //todo: doc
-abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject>
+abstract class DefaultCRUDUseCaseAsync<Domain extends BasicDomainObject,
+        CRUDRepo extends CRUDRepositoryAsync<Domain>>
     extends CRUDUseCaseAsync<Domain> {
-  CRUDRepositoryAsync<Domain> repo;
+  CRUDRepo repo;
 
   DefaultCRUDUseCaseAsync({required this.repo});
 

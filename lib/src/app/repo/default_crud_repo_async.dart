@@ -18,10 +18,13 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepoAsync<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject> extends CRUDRepositoryAsync<Domain> {
+abstract class DefaultCRUDRepoAsync<
+        Domain extends BasicDomainObject,
+        Entity extends BasicEntityObject,
+        ExternalRepo extends CRUDRepositoryExternalAsync<Entity>>
+    extends CRUDRepositoryAsync<Domain> {
   ///External repo, the one who really do the operations.
-  CRUDRepositoryExternalAsync<Entity> externalRepo;
+  ExternalRepo externalRepo;
 
   ///Converter of this repo, hadler of transaction domain <==> entity
   GeneralConverter<Domain, Entity> converter;

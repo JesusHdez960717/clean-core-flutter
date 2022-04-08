@@ -18,11 +18,14 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepo<Domain extends BasicDomainObject,
-    Entity extends BasicEntityObject> extends CRUDRepository<Domain> {
+abstract class DefaultCRUDRepo<
+        Domain extends BasicDomainObject,
+        Entity extends BasicEntityObject,
+        ExternalRepo extends CRUDRepositoryExternal<Entity>>
+    extends CRUDRepository<Domain> {
   //todo: property change listener
   ///External repo, the one who really do the operations.
-  CRUDRepositoryExternal<Entity> externalRepo;
+  ExternalRepo externalRepo;
 
   ///Converter of this repo, hadler of transaction domain <==> entity
   GeneralConverter<Domain, Entity> converter;

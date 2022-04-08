@@ -22,9 +22,9 @@ import 'package:clean_core/clean_core.dart';
 ///     }
 ///   }
 /// ```
-abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject>
-    extends CRUDUseCase<Domain> {
-  CRUDRepository<Domain> repo;
+abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject,
+    CRUDRepo extends CRUDRepository<Domain>> extends CRUDUseCase<Domain> {
+  CRUDRepo repo;
 
   DefaultCRUDUseCase({required this.repo});
 
