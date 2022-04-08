@@ -22,7 +22,10 @@ abstract class CRUDUseCase<Domain extends BasicDomainObject>
   Domain edit(Domain objectToEdit);
 
   ///Destroy the domain.
-  Domain destroy(Domain objectToDestroy);
+  void destroy(Domain objectToDestroy);
+
+  ///Destroy the domain.
+  void destroyById(int id);
 
   ///Find the correspondent domain by it's Key Id.
   Domain findBy(int keyId);

@@ -10,7 +10,7 @@ import 'package:clean_core/clean_core.dart';
 /// See [BasicEntityObject] for ParentEntity's example code.
 /// See [CRUDRepository] for ParentRepo's example code.
 /// ```dart
-///   class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
+///   class ParentRepoImpl extends DefaultCRUDRepoAsync<ParentDomain, ParentEntity>
 ///       implements ParentRepo {
 ///       @override
 ///       void doStuffInRepo(){
@@ -18,12 +18,11 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepo<
+abstract class DefaultCRUDRepoAsync<
         Domain extends BasicDomainObject,
         Entity extends BasicEntityObject,
-        ExternalRepo extends CRUDRepositoryExternal<Entity>>
-    extends CRUDRepository<Domain> {
-  //todo: property change listener
+        ExternalRepo extends CRUDRepositoryExternalAsync<Entity>>
+    extends CRUDRepositoryAsync<Domain> {
   ///External repo, the one who really do the operations.
   ExternalRepo externalRepo;
 
@@ -31,18 +30,19 @@ abstract class DefaultCRUDRepo<
   GeneralConverter<Domain, Entity> converter;
 
   ///Default Constructor
-  DefaultCRUDRepo({required this.externalRepo, required this.converter});
+  DefaultCRUDRepoAsync({required this.externalRepo, required this.converter});
 
   ///Create the domain
   ///Return the domain after been persisted, the returned domain have the
   ///properties assigned by the repo, like the new id.
   @override
-  Domain create(Domain newObject) {
+  Future<Domain> create(Domain newObject) async {
     ///convert domain to entity to be compatible with External repo
     Entity entityToCreate = converter.toEntity(newObject);
 
     ///do the persist
-    Entity entityCreated = externalRepo.create(entityToCreate); //do persist
+    Entity entityCreated =
+        await externalRepo.create(entityToCreate); //do persist
 
     ///convert back the entity persisted to the domain
     newObject = converter.toDomain(entityCreated);
@@ -52,12 +52,12 @@ abstract class DefaultCRUDRepo<
 
   ///Edit the domain
   @override
-  Domain edit(Domain objectToEdit) {
+  Future<Domain> edit(Domain objectToEdit) async {
     ///convert domain to entity to be compatible with External repo
     Entity entityToEdit = converter.toEntity(objectToEdit);
 
     ///do the update
-    Entity entityEdited = externalRepo.edit(entityToEdit); //do edit
+    Entity entityEdited = await externalRepo.edit(entityToEdit); //do edit
 
     ///convert back the entity edited to the domain
     objectToEdit = converter.toDomain(entityEdited);
@@ -67,9 +67,9 @@ abstract class DefaultCRUDRepo<
 
   ///Find all domains
   @override
-  List<Domain> findAll() {
+  Future<List<Domain>> findAll() async {
     ///find all entities
-    List<Entity> entityList = externalRepo.findAll();
+    List<Entity> entityList = await externalRepo.findAll();
 
     ///convert all entities to domains
     List<Domain> domainList = converter.toDomainAll(entityList);
@@ -79,9 +79,9 @@ abstract class DefaultCRUDRepo<
 
   ///Find the correspondent domain by it's Key Id.
   @override
-  Domain findBy(int keyId) {
+  Future<Domain> findBy(int keyId) async {
     ///find the entity
-    Entity entityFounded = externalRepo.findBy(keyId);
+    Entity entityFounded = await externalRepo.findBy(keyId);
 
     ///convert entity to domain
     Domain domainFounded = converter.toDomain(entityFounded);
@@ -91,28 +91,28 @@ abstract class DefaultCRUDRepo<
 
   ///Destroy the domain.
   @override
-  void destroy(Domain objectToDestroy) {
+  Future<void> destroy(Domain objectToDestroy) async {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    externalRepo.destroy(entityToDestroy);
+    await externalRepo.destroy(entityToDestroy);
   }
 
   ///Destroy the domain.
   @override
-  void destroyById(int id) {
+  Future<void> destroyById(int id) async {
     ///destroy the entity
-    externalRepo.destroyById(id);
+    await externalRepo.destroyById(id);
   }
 
   ///Count the amount of domains.
   @override
-  int count() => externalRepo.count();
+  Future<int> count() async => await externalRepo.count();
 
   @override
-  void init() {}
+  Future<void> init() async {}
 
   @override
-  void dispose() {}
+  Future<void> dispose() async {}
 }

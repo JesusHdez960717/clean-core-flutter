@@ -13,22 +13,25 @@ import 'package:clean_core/clean_core.dart';
 /// ```
 abstract class CRUDRepositoryExternal<Entity extends BasicEntityObject>
     extends AbstractExternalRepo {
-  ///Create the domain.
+  ///Create the entity.
   Entity create(Entity newObject);
 
-  ///Edit the domain.
+  ///Edit the entity.
   Entity edit(Entity objectToEdit);
 
-  ///Destroy the domain.
-  Entity destroy(Entity objectToDestroy);
+  ///Destroy the entity.
+  void destroy(Entity objectToDestroy);
 
-  ///Find the correspondent domain by it's Key Id.
+  ///Destroy the entity by it's id.
+  void destroyById(int id);
+
+  ///Find the correspondent entity by it's Key Id.
   Entity findBy(int keyId);
 
-  ///Find all domains.
+  ///Find all entity.
   List<Entity> findAll();
 
-  ///Count the amount of domains.
+  ///Count the amount of entity.
   ///By default calling the length of findAll().
   int count() {
     return findAll().length;

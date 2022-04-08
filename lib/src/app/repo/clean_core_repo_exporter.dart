@@ -5,6 +5,7 @@ export 'abstract_repository.dart';
 export 'crud_repository.dart';
 export 'crud_repository_async.dart';
 export 'default_crud_repo.dart';
+export 'default_crud_repo_async.dart';
 
 ///export entity
 export 'entity/clean_core_entity_exporter.dart';

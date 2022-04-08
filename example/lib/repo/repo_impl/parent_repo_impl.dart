@@ -1,16 +1,14 @@
 import 'package:clean_core/clean_core.dart';
 import 'package:clean_core_example/clean_core_example.dart';
 
-class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
+class ParentRepoImpl
+    extends DefaultCRUDRepo<ParentDomain, ParentEntity, ParentRepoExternal>
     implements ParentRepo {
-  //late ParentRepoExternal _external;
-
   ParentRepoImpl()
       : super(
-            externalRepo: ParentRepoExternalImpl(),
-            converter: ParentConverter.converter) {
-    //_external = externalRepo as ParentRepoExternal;//in case of needed
-  }
+          externalRepo: ParentRepoExternalImpl(),
+          converter: ParentConverter.converter,
+        );
 
   @override
   String doStuffDeeper() {
@@ -18,8 +16,7 @@ class ParentRepoImpl extends DefaultCRUDRepo<ParentDomain, ParentEntity>
   }
 }
 
-class ParentConverter
-    extends DefaultGeneralConverter<ParentDomain, ParentEntity> {
+class ParentConverter extends GeneralConverter<ParentDomain, ParentEntity> {
   static final ParentConverter converter = ParentConverter._();
 
   ParentConverter._();
