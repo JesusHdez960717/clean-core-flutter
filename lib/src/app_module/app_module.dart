@@ -1,8 +1,7 @@
-import 'package:clean_core/src/app_module/app_module_init_screen.dart';
-import 'package:clean_core/src/app_module/app_util_module.dart';
+import 'clean_app_module_exporter.dart';
 
 class AppModule {
-  List<AppModule> mainModules;
+  List<AppMainModule> mainModules;
   List<AppModuleInitScreen> initScreen;
   List<AppUtilModule> utils;
 

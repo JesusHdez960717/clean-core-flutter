@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class AppMainModule {
   String moduleName;
   IconData moduleIcon;
-  String moduleHomePageRouteName;
+  Widget moduleHomePage;
 
   AppMainModule({
     required this.moduleName,
     this.moduleIcon = Icons.broken_image,
-    required this.moduleHomePageRouteName,
+    required this.moduleHomePage,
   });
 }
