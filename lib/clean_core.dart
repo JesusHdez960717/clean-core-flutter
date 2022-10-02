@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 export 'src/app/clean_app_exporter.dart';
+export 'src/app_module/clean_app_module_exporter.dart';
 export 'src/utils/repo_impl/repo_impl_exporter.dart';
 
 class CleanCore {

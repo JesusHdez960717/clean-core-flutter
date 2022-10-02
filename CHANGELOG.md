@@ -1,3 +1,6 @@
+* 1.3.4-SNAPSHOT.20221002:
+  * **NEW** :+: : Added app module to integrate with others modules in same application.
+
 * 1.3.3-RELEASE.20220407:
     * **IMPROVEMENT** :raised_hands: : Upgrade Gradle/Kotlin plugin versions.
     * **IMPROVEMENT** :raised_hands: : Fix plugin version, skip `1.3.1-RELEASE.20220407` & `1.3.2-RELEASE.20220407`.
