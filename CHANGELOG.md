@@ -1,3 +1,6 @@
+* 1.4.0-SNAPSHOT.20221217:
+  * **REFACTOR** :architecture: : Refactor new layers name structure.
+
 * 1.3.4-SNAPSHOT.20221002:
   * **NEW** :+: : Added app module to integrate with others modules in same application.
 
