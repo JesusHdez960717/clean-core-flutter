@@ -1,7 +1,7 @@
 import 'package:clean_core/clean_core.dart';
 import 'package:clean_core_example/clean_core_example.dart';
 
-class ParentUseCaseImpl extends DefaultCRUDUseCase<ParentDomain, ParentRepo>
+class ParentUseCaseImpl extends DelegatedCRUDUseCase<ParentDomain, ParentRepo>
     implements ParentUseCase {
   ParentUseCaseImpl(ParentRepo repo) : super(repo: repo);
 

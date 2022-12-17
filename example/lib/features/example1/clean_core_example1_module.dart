@@ -1,13 +1,14 @@
 import 'package:clean_core_example/clean_core_example.dart';
 
-class CleanCoreExampleCoreModule {
+class CleanCoreExample1Module {
   static late final ParentUseCase parentUseCase;
 
   static bool init() {
     //init repo
-    CleanCoreExampleRepoModule.init();
+    ParentRepo parentRepo = ParentRepoImpl();
 
-    parentUseCase = ParentUseCaseImpl(CleanCoreExampleRepoModule.parentRepo);
+    //init UC
+    parentUseCase = ParentUseCaseImpl(parentRepo);
 
     return true;
   }

@@ -22,11 +22,11 @@ import 'package:clean_core/clean_core.dart';
 ///     }
 ///   }
 /// ```
-abstract class DelegatedRUDUseCase<Domain extends BasicDomainObject,
+abstract class DelegatedCRUDUseCase<Domain extends BasicDomainObject,
     CRUDRepo extends CRUDRepository<Domain>> extends CRUDUseCase<Domain> {
   CRUDRepo repo;
 
-  DelegatedRUDUseCase({required this.repo});
+  DelegatedCRUDUseCase({required this.repo});
 
   @override
   Domain create(Domain newObject) => repo.create(newObject);
