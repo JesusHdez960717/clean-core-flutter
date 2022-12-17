@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _destroyParent(ParentDomain parent) {
-    CleanCoreExampleCoreModule.parentUseCase.destroy(parent);
+    CleanCoreExampleCoreModule.parentUseCase.delete(parent);
     setState(() {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ParentDomain randomParent = all[Random().nextInt(all.length)];
 
     ParentDomain selectedParent =
-        CleanCoreExampleCoreModule.parentUseCase.findBy(randomParent.id);
+        CleanCoreExampleCoreModule.parentUseCase.findById(randomParent.id);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

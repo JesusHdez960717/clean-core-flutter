@@ -7,4 +7,4 @@ import 'package:clean_core/clean_core.dart';
 /// Implemented by the external framework.
 ///
 /// See [CRUDRepositoryExternal] for simple implementation example
-abstract class AbstractExternalRepo {}
+abstract class AbstractFrameworkRepo {}

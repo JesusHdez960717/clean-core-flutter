@@ -11,8 +11,8 @@ import 'package:clean_core/clean_core.dart';
 ///     ParentRepoExternal(Store store) : super(store);
 ///   }
 /// ```
-abstract class CRUDRepositoryExternal<Entity extends BasicEntityObject>
-    extends AbstractExternalRepo {
+abstract class CRUDRepositoryFramework<Entity extends BasicEntityObject>
+    extends AbstractFrameworkRepo {
   ///Create the entity.
   Entity create(Entity newObject);
 
@@ -20,13 +20,13 @@ abstract class CRUDRepositoryExternal<Entity extends BasicEntityObject>
   Entity edit(Entity objectToEdit);
 
   ///Destroy the entity.
-  void destroy(Entity objectToDestroy);
+  void delete(Entity objectToDestroy);
 
   ///Destroy the entity by it's id.
-  void destroyById(int id);
+  void deleteById(int id);
 
   ///Find the correspondent entity by it's Key Id.
-  Entity findBy(int keyId);
+  Entity? findById(int keyId);
 
   ///Find all entity.
   List<Entity> findAll();

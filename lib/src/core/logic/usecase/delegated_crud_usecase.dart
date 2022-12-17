@@ -22,11 +22,11 @@ import 'package:clean_core/clean_core.dart';
 ///     }
 ///   }
 /// ```
-abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject,
+abstract class DelegatedRUDUseCase<Domain extends BasicDomainObject,
     CRUDRepo extends CRUDRepository<Domain>> extends CRUDUseCase<Domain> {
   CRUDRepo repo;
 
-  DefaultCRUDUseCase({required this.repo});
+  DelegatedRUDUseCase({required this.repo});
 
   @override
   Domain create(Domain newObject) => repo.create(newObject);
@@ -38,13 +38,13 @@ abstract class DefaultCRUDUseCase<Domain extends BasicDomainObject,
   List<Domain> findAll() => repo.findAll();
 
   @override
-  Domain findBy(int keyId) => repo.findBy(keyId);
+  Domain? findById(int keyId) => repo.findById(keyId);
 
   @override
-  void destroy(Domain objectToDestroy) => repo.destroy(objectToDestroy);
+  void delete(Domain objectToDestroy) => repo.delete(objectToDestroy);
 
   @override
-  void destroyById(int id) => repo.destroyById(id);
+  void deleteById(int id) => repo.deleteById(id);
 
   @override
   int count() => repo.count();

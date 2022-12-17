@@ -26,13 +26,13 @@ abstract class CRUDRepository<Domain extends BasicDomainObject>
   Domain edit(Domain objectToEdit);
 
   ///Destroy the domain.
-  void destroy(Domain objectToDestroy);
+  void delete(Domain objectToDestroy);
 
   ///Destroy the domain by it's id.
-  void destroyById(int id);
+  void deleteById(int id);
 
   ///Find the correspondent domain by it's Key Id.
-  Domain findBy(int keyId);
+  Domain? findById(int keyId);
 
   ///Find all domains.
   List<Domain> findAll();

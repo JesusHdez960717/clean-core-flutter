@@ -18,10 +18,10 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepoAsync<
+abstract class DelegatedCRUDRepoAsync<
         Domain extends BasicDomainObject,
         Entity extends BasicEntityObject,
-        ExternalRepo extends CRUDRepositoryExternalAsync<Entity>>
+        ExternalRepo extends CRUDRepositoryFrameworkAsync<Entity>>
     extends CRUDRepositoryAsync<Domain> {
   ///External repo, the one who really do the operations.
   ExternalRepo externalRepo;
@@ -30,7 +30,7 @@ abstract class DefaultCRUDRepoAsync<
   GeneralConverter<Domain, Entity> converter;
 
   ///Default Constructor
-  DefaultCRUDRepoAsync({required this.externalRepo, required this.converter});
+  DelegatedCRUDRepoAsync({required this.externalRepo, required this.converter});
 
   ///Create the domain
   ///Return the domain after been persisted, the returned domain have the
@@ -79,31 +79,29 @@ abstract class DefaultCRUDRepoAsync<
 
   ///Find the correspondent domain by it's Key Id.
   @override
-  Future<Domain> findBy(int keyId) async {
+  Future<Domain?> findById(int keyId) async {
     ///find the entity
-    Entity entityFounded = await externalRepo.findBy(keyId);
+    Entity? entityFounded = await externalRepo.findById(keyId);
 
     ///convert entity to domain
-    Domain domainFounded = converter.toDomain(entityFounded);
-
-    return domainFounded;
+    return entityFounded == null ? null : converter.toDomain(entityFounded);
   }
 
   ///Destroy the domain.
   @override
-  Future<void> destroy(Domain objectToDestroy) async {
+  Future<void> delete(Domain objectToDestroy) async {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    await externalRepo.destroy(entityToDestroy);
+    await externalRepo.delete(entityToDestroy);
   }
 
   ///Destroy the domain.
   @override
-  Future<void> destroyById(int id) async {
+  Future<void> deleteById(int id) async {
     ///destroy the entity
-    await externalRepo.destroyById(id);
+    await externalRepo.deleteById(id);
   }
 
   ///Count the amount of domains.

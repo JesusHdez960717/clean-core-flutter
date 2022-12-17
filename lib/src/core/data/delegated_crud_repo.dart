@@ -18,10 +18,10 @@ import 'package:clean_core/clean_core.dart';
 ///       }
 ///   }
 /// ```
-abstract class DefaultCRUDRepo<
+abstract class DelegatedCRUDRepo<
         Domain extends BasicDomainObject,
         Entity extends BasicEntityObject,
-        ExternalRepo extends CRUDRepositoryExternal<Entity>>
+        ExternalRepo extends CRUDRepositoryFramework<Entity>>
     extends CRUDRepository<Domain> {
   //todo: property change listener
   ///External repo, the one who really do the operations.
@@ -31,7 +31,7 @@ abstract class DefaultCRUDRepo<
   GeneralConverter<Domain, Entity> converter;
 
   ///Default Constructor
-  DefaultCRUDRepo({required this.externalRepo, required this.converter});
+  DelegatedCRUDRepo({required this.externalRepo, required this.converter});
 
   ///Create the domain
   ///Return the domain after been persisted, the returned domain have the
@@ -79,31 +79,29 @@ abstract class DefaultCRUDRepo<
 
   ///Find the correspondent domain by it's Key Id.
   @override
-  Domain findBy(int keyId) {
+  Domain? findById(int keyId) {
     ///find the entity
-    Entity entityFounded = externalRepo.findBy(keyId);
+    Entity? entityFounded = externalRepo.findById(keyId);
 
-    ///convert entity to domain
-    Domain domainFounded = converter.toDomain(entityFounded);
-
-    return domainFounded;
+    ///convert entity to domain if isn't null
+    return entityFounded == null ? null : converter.toDomain(entityFounded);
   }
 
   ///Destroy the domain.
   @override
-  void destroy(Domain objectToDestroy) {
+  void delete(Domain objectToDestroy) {
     ///convert the objectToDestroy into entity
     Entity entityToDestroy = converter.toEntity(objectToDestroy);
 
     ///destroy the entity
-    externalRepo.destroy(entityToDestroy);
+    externalRepo.delete(entityToDestroy);
   }
 
   ///Destroy the domain.
   @override
-  void destroyById(int id) {
+  void deleteById(int id) {
     ///destroy the entity
-    externalRepo.destroyById(id);
+    externalRepo.deleteById(id);
   }
 
   ///Count the amount of domains.

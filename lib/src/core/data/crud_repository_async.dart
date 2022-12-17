@@ -16,13 +16,13 @@ abstract class CRUDRepositoryAsync<Domain extends BasicDomainObject>
   Future<Domain> edit(Domain objectToEdit);
 
   ///Destroy the domain.
-  Future<void> destroy(Domain objectToDestroy);
+  Future<void> delete(Domain objectToDestroy);
 
   ///Destroy the domain by it's id.
-  Future<void> destroyById(int id);
+  Future<void> deleteById(int id);
 
   ///Find the correspondent domain by it's Key Id.
-  Future<Domain> findBy(int keyId);
+  Future<Domain?> findById(int keyId);
 
   ///Find all domains.
   Future<List<Domain>> findAll();
