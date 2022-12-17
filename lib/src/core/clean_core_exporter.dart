@@ -1,4 +1,4 @@
-library clean_app_exporter;
+library clean_core_exporter;
 
 ///export the app
 export 'logic/clean_logic_exporter.dart';

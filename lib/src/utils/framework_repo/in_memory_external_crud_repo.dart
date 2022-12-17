@@ -1,7 +1,7 @@
 import 'package:clean_core/clean_core.dart';
 
 class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
-    extends CRUDRepositoryExternal<Entity> {
+    extends CRUDRepositoryFramework<Entity> {
   final Set<Entity> _list = {};
   int newID = 1;
 
@@ -17,7 +17,7 @@ class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
     if (objectToEdit.id == 0) {
       throw Exception("Can't edit en entity with id == 0");
     }
-    destroy(objectToEdit);
+    delete(objectToEdit);
     _list.add(objectToEdit);
 
     return objectToEdit;
@@ -27,16 +27,16 @@ class InMemoryExternalCRUDRepo<Entity extends BasicEntityObject>
   List<Entity> findAll() => _list.toList(growable: false);
 
   @override
-  Entity findBy(Object keyId) =>
+  Entity? findById(Object keyId) =>
       _list.firstWhere((element) => element.id == keyId);
 
   @override
-  void destroy(Entity objectToDestroy) {
+  void delete(Entity objectToDestroy) {
     _list.removeWhere((item) => item.id == objectToDestroy.id);
   }
 
   @override
-  void destroyById(int id) {
+  void deleteById(int id) {
     _list.removeWhere((item) => item.id == id);
   }
 
